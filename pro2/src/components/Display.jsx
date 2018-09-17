@@ -56,18 +56,6 @@ class Display extends Component {
       </div>
     );
   }
-
-  _updateArray() {
-    let randomized = [];
-    while (randomized.length < 4) {
-      let unique = Math.round(Math.random() * 4 + 0.5);
-      if (randomized.indexOf(unique) === -1) {
-        randomized.push(unique);
-      }
-    }
-    this.setState({
-      DisplayArray: randomized
-    });
   }
   _onNav(current_view) {
     this.setState({
