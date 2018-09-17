@@ -8,16 +8,15 @@ class Display extends Component {
     super();
     this.state = {
       view: "tab1",
-      textType: null,
-      imageType: null,
-      soundType: null,
+      textType: "Dog",
+      imageType: "Dog",
+      soundType: "Dog",
       DisplayArray: []
     };
     this.oldState = {};
 
     this._onNav = this._onNav.bind(this);
     this._viewOne = this._viewOne.bind(this);
-    this._updateArray = this._updateArray.bind(this);
   }
 
   getInfoFromCategories = info => {
@@ -34,7 +33,6 @@ class Display extends Component {
       this.setState({ soundType: info.substring(7, info.length) });
     }
     console.log(info);
-    this._updateArray();
   };
   render() {
     return (
@@ -56,7 +54,7 @@ class Display extends Component {
       </div>
     );
   }
-  }
+
   _onNav(current_view) {
     this.setState({
       view: current_view
