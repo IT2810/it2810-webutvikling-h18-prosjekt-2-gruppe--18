@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import AudioComponent from "./AudioComponent.js";
 import TextComponent from "./TextComponent";
+import Visuals from "./Visuals";
 
 /**
  * Tab component that takes care of text, visuals and audio.
@@ -19,18 +20,28 @@ class Tab extends Component {
         selectionNumber: null
       }
     };
+    this.oldstatus = {};
     this._getAudioFile = this._getAudioFile.bind(this);
   }
 
   render() {
+    if (this.oldstatus.imageType !== this.props.typer.imageType) {
+      let unique = Math.round(Math.random() * 4 + 0.5);
+      this.state.visual = this.props.typer.imageType + unique.toString();
+      this.state.visual = this.state.visual.toLocaleLowerCase();
+      console.log("forandret: ", this.state.visual);
+    }
+
+    this.oldstatus = this.props.typer;
     return (
-      <div class="tab-content">
+      <div className="tab-content">
         <h1>{this.props.name}</h1>
         <AudioComponent
           audio={this.state.audio}
           getAudioFile={this._getAudioFile}
         />
         <TextComponent />
+        <Visuals bilde={this.state.visual} />
       </div>
     );
   }
