@@ -14,10 +14,8 @@ class Display extends Component {
         DisplayArray: [],
     };
     this._onNav = this._onNav.bind(this);
-    this._updateArray = this._updateArray.bind(this);
 
     // runs the function
-    this._updateArray();
   }
 
     _getInfoFromCategories = info => {
@@ -33,7 +31,6 @@ class Display extends Component {
             console.log(info);
             this.setState({ soundType: info.substring(7, info.length) });
     }
-        this._updateArray();
     };
 
   render() {
@@ -66,24 +63,6 @@ class Display extends Component {
       )
   }
 
-    _updateArray(){
-         let ArrayofArray = [];
-         let randomized = [];
-         while(ArrayofArray.length<4){
-             let unique = Math.round(Math.random()*4+0.5);
-             if(randomized.indexOf(unique)=== -1){
-                 randomized.push(unique);
-                 if(randomized.length===4){
-                     ArrayofArray.push(randomized);
-                     randomized = [];
-                 }
-
-             }
-     }
-     this.setState({
-         DisplayArray: ArrayofArray,
-     });
-    }
     _onNav(current_view) {
         this.setState( {
             view: current_view

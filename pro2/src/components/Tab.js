@@ -7,28 +7,24 @@
     * Tab component that takes care of text, visuals and audio.
     */
     class Tab extends Component {
-    constructor(props) {
-    super(props);
-    this.state = {
-      audio: {
-        name: "",
-        file: {}
-      },
-      visual: "",
-      text: {
-        category: "",
-        selectionNumber: null
-      }
+        constructor(props) {
+        super(props);
+        this.state = {
+          audio: {
+            name: "",
+            file: {}
+          },
+          visual: "",
+          text: {
+            category: "",
+            selectionNumber: null
+          }
     };
 
     this.oldSoundType = {};
     this._getAudioFile = this._getAudioFile.bind(this);
     }
 
-    componentDidMount() {
-        console.log("Hello");
-        this._getAudioFile();
-    }
     render() {
 
         if (this.oldSoundType !== this.props.soundType) {
@@ -36,6 +32,7 @@
             console.log(unique);
             this.state.audio = this.props.soundType + unique.toString();
             console.log("forandret: ", this.state.audio);
+            this._getAudioFile();
         }
 
         this.oldSoundType = this.props.soundType;
@@ -54,7 +51,9 @@
 
     _getAudioFile() {
         console.log("Did I put enough work in?");
+        console.log(this.props.soundType + "props.soundType");
         if (this.props.soundType === null) {
+            console.log("Is null inside if-statement");
             return;
         }
         let file_name = this.props.soundType.toLowerCase() +  ".mp3";
