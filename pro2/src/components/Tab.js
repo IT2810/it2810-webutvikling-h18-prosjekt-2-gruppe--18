@@ -41,7 +41,7 @@
         if (this.props.soundType === null) {
             return;
         }
-        let file_name = this.props.soundType.toLowerCase() + this.props.num + ".mp3";
+        let file_name = this.props.soundType.toLowerCase() + this.props.num[2] + ".mp3";
         console.log(file_name);
         let file_path = "./media/audio/" + file_name;
         let myInit = {

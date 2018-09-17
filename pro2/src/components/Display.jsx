@@ -30,7 +30,6 @@ class Display extends Component {
         if (info.startsWith("Sound")) {
             console.log(info);
             this.setState({ soundType: info.substring(7, info.length) });
-            // make change noticeable
     }
         this._updateArray();
     };
