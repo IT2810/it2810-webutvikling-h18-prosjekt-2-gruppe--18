@@ -31,6 +31,12 @@ class AudioComponent extends Component {
         )
     }
 
+    /**
+     * Fetches the sound. Uses for debugging.
+     * NOT IN FINAL PRODUCT.
+     * TODO: remove.
+     * @private
+     */
     _fetchSound() {
         let input_file = document.getElementById("audio_file_name").value;
         let p = document.getElementById("test-para");

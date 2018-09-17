@@ -7,13 +7,13 @@ class Display extends Component {
   constructor() {
     super();
     this.state = {
-      view: "tab1",
-    textType: null,
-    imageType: null,
-    soundType: null
+        view: "tab1",
+        textType: null,
+        imageType: null,
+        soundType: null
     };
     this._onNav = this._onNav.bind(this);
-    this._viewOne = this._viewOne.bind(this);
+    this._setDisplayNone = this._setDisplayNone.bind(this);
   }
 
     getInfoFromCategories = info => {
@@ -35,10 +35,10 @@ class Display extends Component {
       return (
         <div>
             <Navigation onNav={this._onNav}/>
-            {this.state.view === "tab1" ? <Tab id="tab1" name="Tab 1"/>: null}
-            {this.state.view === "tab2" ? <Tab id="tab2" name="Tab 2"/> : null}
-            {this.state.view === "tab3" ? <Tab id="tab3" name="Tab 3"/> : null}
-            {this.state.view === "tab4" ? <Tab id="tab4" name="Tab 4"/> : null}
+            <Tab id="t1" name="Tab 1"/>
+            <Tab id="t2" name="Tab 2"/>
+            <Tab id="t3" name="Tab 3"/>
+            <Tab id="t4" name="Tab 4"/>
             <Category onChangeValue={this.getInfoFromCategories} />
         </div>
       )
@@ -47,11 +47,20 @@ class Display extends Component {
   _onNav(current_view) {
     this.setState( {
         view: current_view
-    })
+    });
+    this._setDisplayNone()
   }
 
-  _viewOne() {
-
+  _setDisplayNone() {
+      for (let i = 1; i < 4; i++) {
+          let tab_id = "t" + i;
+          let chosen_tab = document.getElementById(tab_id);
+          if (tab_id !== this.state.view) {
+              chosen_tab.style.display = 'none';
+          } else {
+              chosen_tab.style.display = 'inline';
+          }
+      }
   }
 
 }
