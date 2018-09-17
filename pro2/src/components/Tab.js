@@ -31,6 +31,7 @@ class Tab extends Component {
       this.state.visual = this.state.visual.toLocaleLowerCase();
       console.log("forandret: ", this.state.visual);
     }
+
     this.oldstatus = this.props.typer;
     return (
       <div className="tab-content">
