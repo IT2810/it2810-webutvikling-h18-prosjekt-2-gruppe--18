@@ -36,6 +36,7 @@ class Choices extends Component {
             name={this.props.type}
             id={this.props.type}
             value="Dog"
+            defaultChecked="true"
           />
           Dog
           <br />

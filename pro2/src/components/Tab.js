@@ -1,53 +1,64 @@
-    import React, { Component } from "react";
-    import AudioComponent from "./AudioComponent.js";
-    import TextComponent from "./TextComponent";
-    import Visuals from "./Visuals";
+import React, { Component } from "react";
+import AudioComponent from "./AudioComponent.js";
+import TextComponent from "./TextComponent";
+import Visuals from "./Visuals";
 
-    /**
-    * Tab component that takes care of text, visuals and audio.
-    */
-    class Tab extends Component {
-        constructor(props) {
-        super(props);
-        this.state = {
-          audio: {
-            name: "",
-            file: {}
-          },
-          visual: "",
-          text: {
-            category: "",
-            selectionNumber: null
-          }
-    };
+/**
+* Tab component that takes care of text, visuals and audio.
+*/
+class Tab extends Component {
+    constructor(props) {
+    super(props);
+    this.state = {
+      audio: {
+        name: "",
+        file: {}
+      },
+      visual: "",
+      text: {
+        category: "",
+        selectionNumber: null
+      }
+};
 
-    this.oldSoundType = {};
-    this._getAudioFile = this._getAudioFile.bind(this);
+this.oldSoundType = {};
+this.oldstatus = {};
+this._getAudioFile = this._getAudioFile.bind(this);
+}
+
+render() {
+
+    if (this.oldSoundType !== this.props.soundType) {
+        let unique = Math.round(Math.random() * 4 + 0.5);
+        console.log(unique);
+        this.state.audio = this.props.soundType + unique.toString();
+        console.log("forandret: ", this.state.audio);
+        this._getAudioFile();
     }
 
-    render() {
+    this.oldSoundType = this.props.soundType;
 
-        if (this.oldSoundType !== this.props.soundType) {
-            let unique = Math.round(Math.random() * 4 + 0.5);
-            console.log(unique);
-            this.state.audio = this.props.soundType + unique.toString();
-            console.log("forandret: ", this.state.audio);
-            this._getAudioFile();
-        }
+    if (this.oldstatus.imageType !== this.props.typer.imageType) {
+      let unique = Math.round(Math.random() * 4 + 0.5);
+      this.state.visual = this.props.typer.imageType + unique.toString();
+      this.state.visual = this.state.visual.toLocaleLowerCase();
+      console.log("forandret: ", this.state.visual);
+    }
 
-        this.oldSoundType = this.props.soundType;
-
+    this.oldstatus = this.props.typer;
         return (
           <div className="tab-content">
             <h1>{this.props.name}</h1>
             <AudioComponent
               audio={this.state.audio}
+              getAudioFile={this._getAudioFile}
             />
             <TextComponent />
-            <Visuals/>
+            <Visuals bilde={this.state.visual} />
           </div>
         );
     }
+
 
     _getAudioFile() {
         console.log("Did I put enough work in?");
@@ -88,5 +99,5 @@
             return false;
           });
         }
-    }
-    export default Tab;
+}
+export default Tab;
