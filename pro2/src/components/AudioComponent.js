@@ -7,30 +7,16 @@ import React, {Component} from 'react';
 class AudioComponent extends Component {
     constructor(props) {
         super(props);
-        this._fetchSound = this._fetchSound.bind(this);
     }
 
     render() {
         return (
             <div>
-                <button onClick={this._fetchSound}>
-                    Fetch sound
-                </button>
                 <audio src={this.props.audio.file} controls>
                     Audio not supported in this browser.
                 </audio>
             </div>
         )
-    }
-
-    /**
-     * Fetches the sound. Uses for debugging.
-     * NOT IN FINAL PRODUCT.
-     * TODO: remove.
-     * @private
-     */
-    _fetchSound() {
-        this.props.getAudioFile();
     }
 }
 

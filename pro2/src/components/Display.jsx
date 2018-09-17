@@ -10,15 +10,17 @@ class Display extends Component {
         view: "tab1",
         textType: null,
         imageType: null,
-        soundType: null,
+        soundType: "cat",
         DisplayArray: [],
     };
     this._onNav = this._onNav.bind(this);
     this._updateArray = this._updateArray.bind(this);
+
+    // runs the function
     this._updateArray();
   }
 
-    getInfoFromCategories = info => {
+    _getInfoFromCategories = info => {
         if (info.startsWith("Text")) {
             console.log(info);
             this.setState({ textType: info.substring(6, info.length) });
@@ -33,10 +35,12 @@ class Display extends Component {
     }
         this._updateArray();
     };
+
   render() {
       return (
         <div>
             <Navigation onNav={this._onNav}/>
+            <Category onChangeValue={this._getInfoFromCategories} />
 
             {this.state.view === "tab1" ? <Tab id="tab1"
                                                soundType={this.state.soundType}
@@ -58,34 +62,33 @@ class Display extends Component {
                                                num={this.state.DisplayArray[3]}
                                                name="Tab 4"/> : null}
 
-            <Category onChangeValue={this.getInfoFromCategories} />
         </div>
       )
   }
 
-  _updateArray(){
-     let ArrayofArray = [];
-     let randomized = [];
-     while(ArrayofArray.length<4){
-         let unique = Math.round(Math.random()*4+0.5);
-         if(randomized.indexOf(unique)=== -1){
-             randomized.push(unique)
-             if(randomized.length===4){
-                 ArrayofArray.push(randomized);
-                 randomized = [];
-             }
+    _updateArray(){
+         let ArrayofArray = [];
+         let randomized = [];
+         while(ArrayofArray.length<4){
+             let unique = Math.round(Math.random()*4+0.5);
+             if(randomized.indexOf(unique)=== -1){
+                 randomized.push(unique);
+                 if(randomized.length===4){
+                     ArrayofArray.push(randomized);
+                     randomized = [];
+                 }
 
-         }
+             }
      }
      this.setState({
          DisplayArray: ArrayofArray,
      });
-  }
-  _onNav(current_view) {
-    this.setState( {
-        view: current_view
-    });
-  }
+    }
+    _onNav(current_view) {
+        this.setState( {
+            view: current_view
+        });
+    }
 }
 
 export default Display;

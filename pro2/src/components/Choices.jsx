@@ -27,6 +27,7 @@ class Choices extends Component {
             name={this.props.type}
             id={this.props.type}
             value="Cat"
+            defaultChecked="true"
           />
           Cat
           <br />

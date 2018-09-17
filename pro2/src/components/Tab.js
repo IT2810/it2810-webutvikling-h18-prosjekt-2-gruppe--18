@@ -20,16 +20,31 @@
         selectionNumber: null
       }
     };
+
+    this.oldSoundType = {};
     this._getAudioFile = this._getAudioFile.bind(this);
     }
 
+    componentDidMount() {
+        console.log("Hello");
+        this._getAudioFile();
+    }
     render() {
+
+        if (this.oldSoundType !== this.props.soundType) {
+            let unique = Math.round(Math.random() * 4 + 0.5);
+            console.log(unique);
+            this.state.audio = this.props.soundType + unique.toString();
+            console.log("forandret: ", this.state.audio);
+        }
+
+        this.oldSoundType = this.props.soundType;
+
         return (
           <div className="tab-content">
             <h1>{this.props.name}</h1>
             <AudioComponent
               audio={this.state.audio}
-              getAudioFile={this._getAudioFile}
             />
             <TextComponent />
             <Visuals/>
@@ -38,12 +53,14 @@
     }
 
     _getAudioFile() {
+        console.log("Did I put enough work in?");
         if (this.props.soundType === null) {
             return;
         }
-        let file_name = this.props.soundType.toLowerCase() + this.props.num[2] + ".mp3";
+        let file_name = this.props.soundType.toLowerCase() +  ".mp3";
         console.log(file_name);
         let file_path = "./media/audio/" + file_name;
+
         let myInit = {
           method: "GET",
           headers: new Headers(),
