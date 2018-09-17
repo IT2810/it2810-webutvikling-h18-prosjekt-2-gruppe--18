@@ -53,14 +53,14 @@ class Tab extends Component {
             })
             .then(blob => {
                 let obj = URL.createObjectURL(blob);
-                let a = new Audio(obj);
+
+                
                 this.setState({
                     audio: {
                         name: file_name,
-                        file: a
+                        file: obj
                     }
                 });
-
                 console.log("Changed state audio to: " + obj.toString());
                 return true;
             })

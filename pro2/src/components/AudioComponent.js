@@ -7,7 +7,6 @@ import React, {Component} from 'react';
 class AudioComponent extends Component {
     constructor(props) {
         super(props);
-        this._playSound = this._playSound.bind(this);
         this._fetchSound = this._fetchSound.bind(this);
     }
 
@@ -25,30 +24,14 @@ class AudioComponent extends Component {
                 <button onClick={this._fetchSound}>
                     Fetch sound
                 </button>
-                <button onClick={this._playSound}>
-                    Play sound
-                </button>
+                <audio src={this.props.audio.file} controls>
+                    Audio not supported in this browser.
+                </audio>
             </div>
         )
     }
 
-    /**
-     * Plays sound files that are stored in the
-     * state. The files are played sequentially.
-     * @private
-     */
-    _playSound() {
-        let current_audio = this.props.audio;
-
-        console.log("Right beforeplaying: " + current_audio.file.toString());
-        let audio_player = current_audio.file;
-        audio_player.play().then(() => {
-            console.log("hello");
-        })
-    }
-
     _fetchSound() {
-
         let input_file = document.getElementById("audio_file_name").value;
         let p = document.getElementById("test-para");
 
@@ -57,10 +40,8 @@ class AudioComponent extends Component {
             return;
         }
         this.props.getAudioFile(input_file);
-
+        
         let current_audio = this.props.audio;
-
-
         if (input_file === current_audio.name) {
             p.innerText = "File already selected";
         }
