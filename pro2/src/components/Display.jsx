@@ -47,15 +47,21 @@ class Display extends Component {
   }
 
   _updateArray(){
+     let ArrayofArray = [];
      let randomized = [];
-     while(randomized.length<4){
+     while(ArrayofArray.length<4){
          let unique = Math.round(Math.random()*4+0.5);
          if(randomized.indexOf(unique)=== -1){
              randomized.push(unique)
+             if(randomized.length===4){
+                 ArrayofArray.push(randomized);
+                 randomized = [];
+             }
+
          }
      }
      this.setState({
-         DisplayArray: randomized,
+         DisplayArray: ArrayofArray,
      });
   }
   _onNav(current_view) {
