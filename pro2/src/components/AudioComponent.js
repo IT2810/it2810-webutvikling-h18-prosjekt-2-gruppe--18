@@ -13,14 +13,6 @@ class AudioComponent extends Component {
     render() {
         return (
             <div>
-                <div>
-                    <p id="test-para" >
-                    </p>
-                </div>
-                <label htmlFor="username">
-                    File name (audio)
-                    <input type="text" id ="audio_file_name" defaultValue="cat_meow1.mp3"/>
-                </label>
                 <button onClick={this._fetchSound}>
                     Fetch sound
                 </button>
@@ -38,19 +30,7 @@ class AudioComponent extends Component {
      * @private
      */
     _fetchSound() {
-        let input_file = document.getElementById("audio_file_name").value;
-        let p = document.getElementById("test-para");
-
-        if (!input_file.endsWith(".mp3")) {
-            p.innerText = "Not a valid format";
-            return;
-        }
-        this.props.getAudioFile(input_file);
-        
-        let current_audio = this.props.audio;
-        if (input_file === current_audio.name) {
-            p.innerText = "File already selected";
-        }
+        this.props.getAudioFile();
     }
 }
 
