@@ -9,8 +9,7 @@ class Navigation extends Component {
   //La til en funskjon som skal åpne opp sidenav, men funker ikke akkuratt nu.
     openNav = e => {
         e.preventDefault();
-        document.getElementById("mySidenav").style.display = "block";
-        document.getElementById("mySidenav").style.width = "250";
+        document.getElementById("mySidenav").style.width = "250px";
     };
   //La inn i render selve knappen som blir brukt. Denne koden og den funksjonen ovenfor kan flyttes hvor som helst.
     // kanskje inn i en egen komponent?
