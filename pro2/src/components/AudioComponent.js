@@ -5,9 +5,6 @@ import React, {Component} from 'react';
  * presses the button on this component.
  */
 class AudioComponent extends Component {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         return (

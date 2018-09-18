@@ -68,14 +68,6 @@ class Display extends Component {
         )
     }
 
-    _makeActive() {
-        let c_tab = this.state.view;
-        for (let i = 1; i < 4 ; i++) {
-
-
-        }
-    }
-
     _onNav(current_view) {
         this.setState({
             view: current_view
