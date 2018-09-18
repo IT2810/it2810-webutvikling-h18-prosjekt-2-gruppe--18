@@ -47,7 +47,9 @@ render() {
 
     this.oldstatus = this.props.typer;
         return (
-          <div className="tab-content">
+          <div
+              className={this.props.activeStatus}
+          >
             <h1>{this.props.name}</h1>
             <AudioComponent
               audio={this.state.audio}

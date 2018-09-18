@@ -38,29 +38,42 @@ class Display extends Component {
             <div>
                 <Navigation onNav={this._onNav}/>
                 <Category onChangeValue={this._getInfoFromCategories}/>
+                <Tab id="tab1"
+                   soundType={this.state.soundType}
+                   typer={this.state}
+                   activeStatus = {this.state.view === "tab1"
+                       ? 'tab-active' : 'tab-inactive'}
+                   name="Tab 1"/>
 
-                {this.state.view === "tab1" ? <Tab id="tab1"
-                                                   soundType={this.state.soundType}
-                                                   num={this.state.DisplayArray[0]}
-                                                   name="Tab 1"/> : null}
+                <Tab id="tab2"
+                   soundType={this.state.soundType}
+                   typer={this.state}
+                   activeStatus = {this.state.view === "tab2"
+                       ? 'tab-active' : 'tab-inactive'}
+                   name="Tab 2"/>
 
-                {this.state.view === "tab2" ? <Tab id="tab2"
-                                                   soundType={this.state.soundType}
-                                                   num={this.state.DisplayArray[1]}
-                                                   name="Tab 2"/> : null}
-
-                {this.state.view === "tab3" ? <Tab id="tab3"
-                                                   soundType={this.state.soundType}
-                                                   num={this.state.DisplayArray[2]}
-                                                   name="Tab 3"/> : null}
-
-                {this.state.view === "tab4" ? <Tab id="tab4"
-                                                   soundType={this.state.soundType}
-                                                   num={this.state.DisplayArray[3]}
-                                                   name="Tab 4"/> : null}
-
+                <Tab id="tab3"
+                   soundType={this.state.soundType}
+                   typer={this.state}
+                   activeStatus = {this.state.view === "tab3"
+                       ? 'tab-active' : 'tab-inactive'}
+                   name="Tab 3"/>
+                <Tab id="tab4"
+                   soundType={this.state.soundType}
+                   typer={this.state}
+                   activeStatus = {this.state.view === "tab4"
+                       ? 'tab-active' : 'tab-inactive'}
+                   name="Tab 4"/>
             </div>
         )
+    }
+
+    _makeActive() {
+        let c_tab = this.state.view;
+        for (let i = 1; i < 4 ; i++) {
+
+
+        }
     }
 
     _onNav(current_view) {
