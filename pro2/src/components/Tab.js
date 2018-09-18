@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import AudioComponent from "./AudioComponent.js";
-import TextComponent from "./TextComponent";
+import TextComponent from "./TextComponent.jsx";
 import Visuals from "./Visuals";
 
 /**
