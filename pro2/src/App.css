@@ -32,7 +32,6 @@ div > ul > li {
   padding: 16px;
   text-decoration: none;
   float: left;
-  text-decoration: none;
 }
 
 div > ul {
@@ -100,6 +99,16 @@ li > a:hover {
 }
 
 .tab-content {
+  margin: 2em 5em 0em 5em;
+  font-family: Verdana, sans-serif;
+  font-style: normal;
+}
+.tab-inactive {
+  display: none;
+}
+
+.tab-active  {
+  display: block;
   margin: 2em 5em 0em 5em;
   font-family: Verdana, sans-serif;
   font-style: normal;
