@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import AudioComponent from "./AudioComponent.js";
-import TextComponent from "./TextComponent";
+import TextComponent from "./TextComponent.jsx";
 import Visuals from "./Visuals";
 
 /**
@@ -31,6 +31,12 @@ class Tab extends Component {
       this.state.visual = this.state.visual.toLocaleLowerCase();
       console.log("forandret: ", this.state.visual);
     }
+    if(this.oldstatus.textType !== this.props.typer.textType){
+        let unique = Math.round(Math.random() * 4 + 0.5);
+        this.state.text.selectionNumber = unique;
+        this.state.text.category = this.props.typer.textType;
+        console.log("forandret: ", this.state.text.category);
+    }
 
     this.oldstatus = this.props.typer;
     return (
@@ -40,7 +46,7 @@ class Tab extends Component {
           audio={this.state.audio}
           getAudioFile={this._getAudioFile}
         />
-        <TextComponent />
+        <TextComponent text={this.state.text} />
         <Visuals bilde={this.state.visual} />
       </div>
     );
