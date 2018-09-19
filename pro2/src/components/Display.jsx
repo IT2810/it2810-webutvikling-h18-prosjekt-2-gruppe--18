@@ -40,28 +40,28 @@ class Display extends Component {
                    soundType={this.state.soundType}
                    typer={this.state}
                    activeStatus = {this.state.view === "tab1"
-                       ? 'tab-active' : 'tab-inactive'}
+                       ? '' : 'tab-inactive'}
                    name="Tab 1"/>
 
                 <Tab id="tab2"
                    soundType={this.state.soundType}
                    typer={this.state}
                    activeStatus = {this.state.view === "tab2"
-                       ? 'tab-active' : 'tab-inactive'}
+                       ? '' : 'tab-inactive'}
                    name="Tab 2"/>
 
                 <Tab id="tab3"
                    soundType={this.state.soundType}
                    typer={this.state}
                    activeStatus = {this.state.view === "tab3"
-                       ? 'tab-active' : 'tab-inactive'}
+                       ? '' : 'tab-inactive'}
                    name="Tab 3"/>
 
                 <Tab id="tab4"
                    soundType={this.state.soundType}
                    typer={this.state}
                    activeStatus = {this.state.view === "tab4"
-                       ? 'tab-active' : 'tab-inactive'}
+                       ? '' : 'tab-inactive'}
                    name="Tab 4"/>
             </div>
         )

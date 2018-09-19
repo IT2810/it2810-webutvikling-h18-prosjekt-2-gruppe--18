@@ -107,12 +107,7 @@ li > a:hover {
   display: none;
 }
 
-.tab-active  {
-  display: block;
-  margin: 2em 5em 0em 5em;
-  font-family: Verdana, sans-serif;
-  font-style: normal;
-}
+
 
 #bilde > svg {
   position: absolute;

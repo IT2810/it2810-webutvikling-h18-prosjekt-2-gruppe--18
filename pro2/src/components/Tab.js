@@ -5,6 +5,7 @@ import Visuals from "./Visuals";
 
 /**
  * Tab component that takes care of text, visuals and audio.
+ * Development Status: Unfinished
  */
 class Tab extends Component {
     constructor(props) {
@@ -20,11 +21,11 @@ class Tab extends Component {
                 selectionNumber: null
             }
         };
+        this._getAudioFile = this._getAudioFile.bind(this);
 
         this.oldSoundType = {};
         this.oldstatus = {};
         this.oldImageType = {};
-        this._getAudioFile = this._getAudioFile.bind(this);
     }
 
     render() {
@@ -65,7 +66,6 @@ class Tab extends Component {
                 <h1>{this.props.name}</h1>
                 <AudioComponent
                     audio={this.state.audio}
-                    getAudioFile={this._getAudioFile}
                 />
                 <TextComponent
                     text={this.state.text}/>
@@ -96,7 +96,6 @@ class Tab extends Component {
         let file_name = name.toLowerCase();
         console.log(this.props.id ,"filename: ", file_name);
         let file_path = "./media/audio/" + file_name;
-
 
         // TODO check if necessary
         let myInit = {

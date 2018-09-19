@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 /**
  * Component that plays chosen audio when one
  * presses the button on this component.
+ * Development Status: Completed
  */
 class AudioComponent extends Component {
 
