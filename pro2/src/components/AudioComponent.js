@@ -9,6 +9,9 @@ class AudioComponent extends Component {
     render() {
         return (
             <div>
+                <p>
+                    {this.props.audio.name}
+                </p>
                 <audio src={this.props.audio.file} controls>
                     Audio not supported in this browser.
                 </audio>

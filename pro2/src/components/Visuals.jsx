@@ -3,19 +3,11 @@ import $ from "jquery";
 import axios from "axios";
 
 class Visuals extends Component {
-  state = {
-    image: null
-  };
 
-  constructor() {
-    super();
-  }
 
   setImage(name) {
     axios.get(`./media/images/` + name + ".svg").then(response => {
-      const image = response.data;
-      this.state.image = image;
-      $("#bilde").html(this.state.image);
+      $("#bilde").html(response.data);
     });
   }
 

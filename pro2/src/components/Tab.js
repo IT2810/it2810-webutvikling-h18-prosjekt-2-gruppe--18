@@ -29,13 +29,17 @@ class Tab extends Component {
 
     render() {
 
+
+        // sound
         if (this.oldSoundType !== this.props.soundType) {
             let unique = Math.round(Math.random() * 4 + 0.5);
-            this.state.audio.name = this.props.soundType + unique.toString();
-            this._getAudioFile();
+            let sound_name = this.props.soundType + unique.toString();
+            this._getAudioFile(sound_name);
         }
         this.oldSoundType = this.props.soundType;
 
+
+        // image
         if (this.oldImageType !== this.props.typer.imageType) {
             let unique = Math.round(Math.random() * 4 + 0.5);
             this.state.visual = this.props.typer.imageType + unique.toString();
@@ -45,6 +49,8 @@ class Tab extends Component {
 
         this.oldImageType = this.props.typer.imageType;
 
+
+        // text
         if(this.oldstatus.textType !== this.props.typer.textType) {
             let unique = Math.round(Math.random() * 4 + 0.5);
             this.state.text.selectionNumber = unique;
@@ -72,8 +78,8 @@ class Tab extends Component {
      * Fetches the sound and stores it in the state.
      * @private
      */
-    _getAudioFile() {
-        let name = this.state.audio.name;
+    _getAudioFile(sound_name) {
+        let name = sound_name;
 
         // validation 1
         // if name is null no option has been selected.
@@ -91,6 +97,8 @@ class Tab extends Component {
         console.log(this.props.id ,"filename: ", file_name);
         let file_path = "./media/audio/" + file_name;
 
+
+        // TODO check if necessary
         let myInit = {
             method: "GET",
             headers: new Headers(),

@@ -56,6 +56,7 @@ class Display extends Component {
                    activeStatus = {this.state.view === "tab3"
                        ? 'tab-active' : 'tab-inactive'}
                    name="Tab 3"/>
+
                 <Tab id="tab4"
                    soundType={this.state.soundType}
                    typer={this.state}
