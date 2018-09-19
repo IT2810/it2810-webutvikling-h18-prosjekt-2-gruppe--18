@@ -32,7 +32,6 @@ div > ul > li {
   padding: 16px;
   text-decoration: none;
   float: left;
-  text-decoration: none;
 }
 
 div > ul {
@@ -107,6 +106,16 @@ li > a:hover {
   font-style: normal;
   width: 300px;
 }
+.tab-inactive {
+  display: none;
+}
+
+.tab-active  {
+  display: block;
+  margin: 2em 5em 0em 5em;
+  font-family: Verdana, sans-serif;
+  font-style: normal;
+}
 
 #bilde > svg {
   position: absolute;
@@ -155,3 +164,4 @@ li > a:hover {
 .diktTittel {
   font-style: italic;
 }
+

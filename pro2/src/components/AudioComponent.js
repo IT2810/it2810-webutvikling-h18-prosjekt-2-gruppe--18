@@ -5,47 +5,14 @@ import React, { Component } from "react";
  * presses the button on this component.
  */
 class AudioComponent extends Component {
-  constructor(props) {
-    super(props);
-    this._fetchSound = this._fetchSound.bind(this);
-  }
-
   render() {
     return (
-      <div id="AudioComponent">
-        <div>
-          <p id="test-para" />
-        </div>
-        <label htmlFor="username">
-          File name (audio)
-          <input
-            type="text"
-            id="audio_file_name"
-            defaultValue="cat_meow1.mp3"
-          />
-        </label>
-        <button onClick={this._fetchSound}>Fetch sound</button>
+      <div>
         <audio src={this.props.audio.file} controls>
           Audio not supported in this browser.
         </audio>
       </div>
     );
-  }
-
-  _fetchSound() {
-    let input_file = document.getElementById("audio_file_name").value;
-    let p = document.getElementById("test-para");
-
-    if (!input_file.endsWith(".mp3")) {
-      p.innerText = "Not a valid format";
-      return;
-    }
-    this.props.getAudioFile(input_file);
-
-    let current_audio = this.props.audio;
-    if (input_file === current_audio.name) {
-      p.innerText = "File already selected";
-    }
   }
 }
 
