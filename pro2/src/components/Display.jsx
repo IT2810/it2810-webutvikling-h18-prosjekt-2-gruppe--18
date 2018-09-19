@@ -71,7 +71,6 @@ class Display extends Component {
             view: current_view
         });
     }
-
 }
 
 export default Display;

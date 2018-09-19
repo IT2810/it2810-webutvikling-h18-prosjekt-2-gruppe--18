@@ -14,8 +14,6 @@ export default class TextComponent extends React.Component {
         super(props);
         this.state = {
             dikt: [],
-            selecetionNumber: 1,
-            kategoriDikt: "hund"
         };
 
     }
@@ -25,21 +23,21 @@ export default class TextComponent extends React.Component {
      */
     componentDidMount() {
 
-        axios.get('./media/TextJSON/'+this.state.kategoriDikt
+        axios.get('./media/TextJSON/'+this.props.text.category
         +'Dikt.json')
             .then(res => {
-                const poemData = res.data.slice(this.state.selecetionNumber-1, this.state.selecetionNumber);
+                const poemData = res.data.slice(this.props.text.selectionNumber-1, this.props.text.selectionNumber);
                 this.setState({dikt: poemData});
             });
 
     }
 
     render() {
-
+    this.componentDidMount();
         return (
                 <React.Fragment>
                 {this.state.dikt.map(poem => {
-                        return poem.id === this.state.selecetionNumber ?
+                        return poem.id === this.props.text.selectionNumber ?
                             <div key={poem.id} className={"diktTekst"}>
                             <p className={"diktTittel"} >{poem.tittel}</p>
                             <p>{poem.firstLine}</p>

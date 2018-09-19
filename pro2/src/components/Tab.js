@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import AudioComponent from "./AudioComponent.js";
-import TextComponent from "./TextComponent";
+import TextComponent from "./TextComponent.jsx";
 import Visuals from "./Visuals";
 
 /**
@@ -36,7 +36,8 @@ render() {
               audio={this.state.audio}
               getAudioFile={this._getAudioFile}
             />
-            <TextComponent />
+            <TextComponent
+                text={this.state.text}/>
             <Visuals bilde={this.state.visual} />
           </div>
         );
@@ -53,7 +54,6 @@ render() {
             this.state.audio.name = this.props.soundType + unique.toString();
             this._getAudioFile();
         }
-
         this.oldSoundType = this.props.soundType;
     }
 
