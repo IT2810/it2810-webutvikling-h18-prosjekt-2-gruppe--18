@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 
 class Choices extends Component {
-  state = {};
   constructor(props) {
     super(props);
     this._getValueChecked = this._getValueChecked.bind(this);
   }
 
+
   _getValueChecked() {
-    var checked = document.querySelector(
+    let checked = document.querySelector(
       'input[name="' + this.props.type + '"]:checked'
     ).value;
     this.props.onChangeValue(checked);
@@ -27,7 +27,6 @@ class Choices extends Component {
             name={this.props.type}
             id={this.props.type}
             value="Cat"
-            defaultChecked="true"
           />
           Cat
           <br />
@@ -36,7 +35,6 @@ class Choices extends Component {
             name={this.props.type}
             id={this.props.type}
             value="Dog"
-            defaultChecked="true"
           />
           Dog
           <br />

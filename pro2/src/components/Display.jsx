@@ -10,25 +10,22 @@ class Display extends Component {
             view: "tab1",
             textType: null,
             imageType: null,
-            soundType: "cat",
+            soundType: null,
         };
         this.oldState = {};
 
         this._onNav = this._onNav.bind(this);
-
     }
+
 
     _getInfoFromCategories = info => {
         if (info.startsWith("Text")) {
-            console.log(info);
             this.setState({textType: info.substring(6, info.length)});
         }
         if (info.startsWith("Image")) {
-            console.log(info);
             this.setState({imageType: info.substring(7, info.length)});
         }
         if (info.startsWith("Sound")) {
-            console.log(info);
             this.setState({soundType: info.substring(7, info.length)});
         }
     };
@@ -38,6 +35,7 @@ class Display extends Component {
             <div>
                 <Navigation onNav={this._onNav}/>
                 <Category onChangeValue={this._getInfoFromCategories}/>
+
                 <Tab id="tab1"
                    soundType={this.state.soundType}
                    typer={this.state}
@@ -75,6 +73,5 @@ class Display extends Component {
     }
 
 }
-
 
 export default Display;

@@ -11,8 +11,8 @@ class Tab extends Component {
     super(props);
     this.state = {
       audio: {
-        name: "",
-        file: {}
+          name: null,
+          file: null
       },
       visual: "",
       text: {
@@ -27,25 +27,6 @@ this._getAudioFile = this._getAudioFile.bind(this);
 }
 
 render() {
-
-    if (this.oldSoundType !== this.props.soundType) {
-        let unique = Math.round(Math.random() * 4 + 0.5);
-        console.log(unique);
-        this.state.audio = this.props.soundType + unique.toString();
-        console.log("forandret: ", this.state.audio);
-        this._getAudioFile();
-    }
-
-    this.oldSoundType = this.props.soundType;
-
-    if (this.oldstatus.imageType !== this.props.typer.imageType) {
-      let unique = Math.round(Math.random() * 4 + 0.5);
-      this.state.visual = this.props.typer.imageType + unique.toString();
-      this.state.visual = this.state.visual.toLocaleLowerCase();
-      console.log("forandret: ", this.state.visual);
-    }
-
-    this.oldstatus = this.props.typer;
         return (
           <div
               className={this.props.activeStatus}
@@ -62,15 +43,43 @@ render() {
     }
 
 
+    /**
+     * Checks to see if AJAX should fetch the
+     * new sound file and update the state.
+     */
+    componentDidUpdate() {
+        if (this.oldSoundType !== this.props.soundType) {
+            let unique = Math.round(Math.random() * 4 + 0.5);
+            this.state.audio.name = this.props.soundType + unique.toString();
+            this._getAudioFile();
+        }
+
+        this.oldSoundType = this.props.soundType;
+    }
+
+
+    /**
+     * Fetches the sound and stores it in the state.
+     * @private
+     */
     _getAudioFile() {
-        console.log("Did I put enough work in?");
-        console.log(this.props.soundType + "props.soundType");
-        if (this.props.soundType === null) {
-            console.log("Is null inside if-statement");
+        let name = this.state.audio.name;
+
+        // validation 1
+        // if name is null no option has been selected.
+        if (name === null) {
             return;
         }
-        let file_name = this.props.soundType.toLowerCase() +  ".mp3";
-        console.log(file_name);
+
+
+        // validation 2
+        // mostly just used once.
+        if (!name.endsWith(".mp3")) {
+            name = name + ".mp3";
+        }
+
+        let file_name = name.toLowerCase();
+        console.log("filename: " + file_name);
         let file_path = "./media/audio/" + file_name;
 
         let myInit = {
@@ -80,6 +89,9 @@ render() {
           cache: "default"
         };
 
+
+        // fetches the sound file and updates the
+        // state so that the AudioComponent gets updated.
         fetch(file_path, myInit)
           .then(response => {
             return response.blob();
@@ -93,7 +105,8 @@ render() {
                 file: obj
               }
             });
-            console.log("Changed state audio to: " + obj.toString());
+
+            console.log("Changed state audio to: " + this.state.audio);
             return true;
           })
           .catch(error => {
