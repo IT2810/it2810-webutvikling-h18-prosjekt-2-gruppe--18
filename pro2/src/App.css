@@ -58,12 +58,13 @@ li > a {
 li > a:hover {
   background-color: #111111;
 }
-
-.tab-content {
+.flex-container {
   grid-column-start: 1;
-  grid-column-end: 4;
+  grid-column-end: 5;
   grid-row-start: 2;
-  grid-row-end: 4;
+  grid-row-end: 3;
+  display: flex;
+  overflow: auto;
 }
 
 #Category-container {
@@ -71,6 +72,7 @@ li > a:hover {
   padding: 10px;
   margin: 10px;
   float: right;
+  width: 200px;
   grid-column-start: 4;
   grid-column-end: 5;
 }
@@ -103,6 +105,7 @@ li > a:hover {
   margin: 2em 5em 0em 5em;
   font-family: Verdana, sans-serif;
   font-style: normal;
+  width: 300px;
 }
 
 #bilde > svg {
@@ -143,6 +146,10 @@ li > a:hover {
   background-color: red;
   margin: auto;
   width: 50%;
+  grid-column-start: 2;
+  grid-column-end: 4;
+  grid-row-start: 3;
+  grid-row-end: 4;
 }
 
 .diktTittel {

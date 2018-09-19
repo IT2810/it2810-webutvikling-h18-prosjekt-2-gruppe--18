@@ -9,7 +9,7 @@ class Display extends Component {
     this.state = {
       view: "tab1",
       textType: null,
-      imageType: null,
+      imageType: "Dog",
       soundType: null,
       DisplayArray: []
     };
@@ -17,7 +17,6 @@ class Display extends Component {
 
     this._onNav = this._onNav.bind(this);
     this._viewOne = this._viewOne.bind(this);
-    this._updateArray = this._updateArray.bind(this);
   }
 
   getInfoFromCategories = info => {
@@ -34,29 +33,30 @@ class Display extends Component {
       this.setState({ soundType: info.substring(7, info.length) });
     }
     console.log(info);
-    this._updateArray();
   };
   render() {
     return (
       <div>
         <Navigation onNav={this._onNav} />
-        {this.state.view === "tab1" ? (
-          <Tab typer={this.state} name="Tab 1" />
-        ) : null}
-        {this.state.view === "tab2" ? (
-          <Tab typer={this.state} name="Tab 2" />
-        ) : null}
-        {this.state.view === "tab3" ? (
-          <Tab typer={this.state} name="Tab 3" />
-        ) : null}
-        {this.state.view === "tab4" ? (
-          <Tab typer={this.state} name="Tab 4" />
-        ) : null}
-        <Category onChangeValue={this.getInfoFromCategories} />
+        <div className="flex-container">
+          {this.state.view === "tab1" ? (
+            <Tab typer={this.state} name="Tab 1" />
+          ) : null}
+          {this.state.view === "tab2" ? (
+            <Tab typer={this.state} name="Tab 2" />
+          ) : null}
+          {this.state.view === "tab3" ? (
+            <Tab typer={this.state} name="Tab 3" />
+          ) : null}
+          {this.state.view === "tab4" ? (
+            <Tab typer={this.state} name="Tab 4" />
+          ) : null}
+          <Category onChangeValue={this.getInfoFromCategories} />
+        </div>
       </div>
     );
   }
-  }
+
   _onNav(current_view) {
     this.setState({
       view: current_view

@@ -14,8 +14,7 @@ class Visuals extends Component {
   setImage(name) {
     axios.get(`./media/images/` + name + ".svg").then(response => {
       const image = response.data;
-      this.state.image = image;
-      $("#bilde").html(this.state.image);
+      $("#bilde").html(image);
     });
   }
 
