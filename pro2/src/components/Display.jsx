@@ -8,9 +8,9 @@ class Display extends Component {
         super();
         this.state = {
             view: "tab1",
-            textType: null,
-            imageType: null,
-            soundType: null,
+            textType: "Dog",
+            imageType: "Dog",
+            soundType: "Dog",
         };
         this.oldState = {};
 

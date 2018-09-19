@@ -22,7 +22,6 @@ export default class TextComponent extends React.Component {
      * Henter inn JSON filen med diktene våre og setter dikt arrayen til å holde på det ene dikten som blir valgt
      */
     componentDidMount() {
-
         axios.get('./media/TextJSON/'+this.props.text.category
         +'Dikt.json')
             .then(res => {
@@ -33,7 +32,6 @@ export default class TextComponent extends React.Component {
     }
 
     render() {
-    this.componentDidMount();
         return (
                 <React.Fragment>
                 {this.state.dikt.map(poem => {
