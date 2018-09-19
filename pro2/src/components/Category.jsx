@@ -6,7 +6,13 @@ class Category extends Component {
     textType: null,
     imageType: null,
     soundType: null,
+    mobile: false
   };
+
+    componentDidMount() {
+        window.addEventListener("resize", this.resize.bind(this));
+        this.resize();
+    }
 
   sendInfoUp() {
     this.props.onChangeValue(this.state);
@@ -22,6 +28,18 @@ class Category extends Component {
     this.props.onChangeValue("Text: " + e);
   };
 
+  resize = e => {
+    let size = window.innerWidth;
+    if (size <= 600){
+        this.setState({
+            mobile: true
+        })
+    } else {
+        this.setState({
+            mobile: false
+        })
+    }
+  };
   //Closes the navigation panel
   closeNav = e => {
         e.preventDefault();
@@ -30,53 +48,55 @@ class Category extends Component {
 //Her er løsningen basicly å dele opp i en div, med 2 sub divs som er like, men omringet av en mobile/nonMobile div
     //Slik at man kan endre enkelt hvem som vises med CSS
   render() {
+      let mobile = this.state.mobile;
+      if(mobile){
+            return(
+                <div id="mySidenav" className="sidenav">
+                    /* The button for closing the sidenav*/
+                    <a href={null} className="closebtn" onClick={this.closeNav}>&times;</a>
+                    <div id="Category-container">
+                        <Choices
+                            type="image"
+                            value={this.state.imageType}
+                            onChangeValue={this.handleChangeValueImage}
+                        />
+                        <Choices
+                            type="sound"
+                            value={this.state.soundType}
+                            onChangeValue={this.handleChangeValueSound}
+                        />
+                        <Choices
+                            type="text"
+                            value={this.state.textType}
+                            onChangeValue={this.handleChangeValueText}
+                        />
+                    </div>
+                </div>
+            );
+      } else {
           return(
-             <div>
-                 <div id="nonMobileDiv">
-              <div id="Category-container">
-                  <Choices
-                      type="image"
-                      value={this.state.imageType}
-                      onChangeValue={this.handleChangeValueImage}
-                  />
-                  <Choices
-                      type="sound"
-                      value={this.state.soundType}
-                      onChangeValue={this.handleChangeValueSound}
-                  />
-                  <Choices
-                      type="text"
-                      value={this.state.textType}
-                      onChangeValue={this.handleChangeValueText}
-                  />
+              <div id="nonMobileDiv">
+                  <div id="Category-container">
+                      <Choices
+                          type="image"
+                          value={this.state.imageType}
+                          onChangeValue={this.handleChangeValueImage}
+                      />
+                      <Choices
+                          type="sound"
+                          value={this.state.soundType}
+                          onChangeValue={this.handleChangeValueSound}
+                      />
+                      <Choices
+                          type="text"
+                          value={this.state.textType}
+                          onChangeValue={this.handleChangeValueText}
+                      />
+                  </div>
               </div>
-             </div>
-
-              <div id="mySidenav" className="sidenav">
-                  /* The button for closing the sidenav*/
-                  <a href={null} className="closebtn" onClick={this.closeNav}>&times;</a>
-              <div id="Category-container">
-                  <Choices
-                      type="image"
-                      value={this.state.imageType}
-                      onChangeValue={this.handleChangeValueImage}
-                  />
-                  <Choices
-                      type="sound"
-                      value={this.state.soundType}
-                      onChangeValue={this.handleChangeValueSound}
-                  />
-                  <Choices
-                      type="text"
-                      value={this.state.textType}
-                      onChangeValue={this.handleChangeValueText}
-                  />
-              </div>
-              </div>
-             </div>
-
-
           )
+      }
+
       }
 }
 
