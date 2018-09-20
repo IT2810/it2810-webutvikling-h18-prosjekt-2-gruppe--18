@@ -6,7 +6,6 @@ import axios from "axios";
 
 /**
  * Tab component that takes care of text, visuals and audio.
- * Development Status: Unfinished
  */
 class Tab extends Component {
     constructor(props) {
@@ -25,7 +24,6 @@ class Tab extends Component {
             }
         };
 
-        this.oldTextType = {};
         this.oldImageType = {};
         this._getAudioFile = this._getAudioFile.bind(this);
         this._getTextFile = this._getTextFile.bind(this);
@@ -33,16 +31,20 @@ class Tab extends Component {
     }
 
 
-
+    /**
+     * Loads the files as the site is initialized.
+     */
     componentDidMount() {
-        // FIXME update at start of initial render
-        // current setup not work.
-        // this._updateSubComponents();
 
         // sound
         let unique = Math.round(Math.random() * 4 + 0.5);
         let sound_name = this.props.soundType + unique.toString();
         this._getAudioFile(sound_name);
+
+        // text
+        let unique2 = Math.round(Math.random() * 4 + 0.5);
+        let CategoryType = this.props.typer.textType;
+        this._getTextFile(unique2, CategoryType);
     }
 
 
@@ -50,16 +52,30 @@ class Tab extends Component {
         this._updateSubComponents(prevProps);
     }
 
-
-    // to be used in componentDidUpdate
+    /**
+     * Is used in componentDidUpdate to update files.
+     * @param prevProps
+     * @private
+     */
     _updateSubComponents(prevProps) {
+
+        // sound
         if (prevProps.soundType !== this.props.soundType) {
             let unique = Math.round(Math.random() * 4 + 0.5);
             let sound_name = this.props.soundType + unique.toString();
             this._getAudioFile(sound_name);
         }
 
-        // TODO fix same feature for image and text
+        // text
+        if (prevProps.typer.textType !== this.props.typer.textType) {
+            let unique = Math.round(Math.random() * 4 + 0.5);
+            let CategoryType = this.props.typer.textType;
+            this._getTextFile(unique, CategoryType);
+        }
+
+
+
+        // TODO fix same feature for image
         // so it's not in render.
     }
     render() {
@@ -70,16 +86,7 @@ class Tab extends Component {
             console.log("forandret: ", this.state.visual);
         }
 
-        this.oldImageType = this.props.typer.imageType;
-
-        if(this.oldTextType !== this.props.typer.textType) {
-            let unique = Math.round(Math.random() * 4 + 0.5);
-            let CategoryType = this.props.typer.textType;
-            this._getTextFile(unique, CategoryType);
-        }
-
-        this.oldTextType = this.props.typer.textType;
-
+        this.oldImageType = this.props.typer.imageType; 
         return (
             <div className={this.props.activeStatus}>
                 <AudioComponent
