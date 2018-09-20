@@ -3,9 +3,6 @@ import Choices from "./Choices";
 
 class Category extends Component {
   state = {
-    textType: null,
-    imageType: null,
-    soundType: null,
     mobile: false
   };
 
