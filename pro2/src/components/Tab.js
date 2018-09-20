@@ -28,14 +28,16 @@ class Tab extends Component {
         this.oldImageType = {};
         this._getAudioFile = this._getAudioFile.bind(this);
         this._getTextFile = this._getTextFile.bind(this);
+
     }
+
 
     render() {
 
         if (this.oldSoundType !== this.props.soundType) {
             let unique = Math.round(Math.random() * 4 + 0.5);
-            this.state.audio.name = this.props.soundType + unique.toString();
-            this._getAudioFile();
+            let sound_name  = this.props.soundType + unique.toString();
+            this._getAudioFile(sound_name);
         }
         this.oldSoundType = this.props.soundType;
 
@@ -55,15 +57,17 @@ class Tab extends Component {
         }
 
         this.oldTextType = this.props.typer.textType;
+
         return (
             <div className={this.props.activeStatus}>
-                <h1>{this.props.name}</h1>
                 <AudioComponent
                     audio={this.state.audio}
                     getAudioFile={this._getAudioFile}
                 />
-                <TextComponent text={this.state.text}/>
-                <Visuals bilde={this.state.visual} />
+                <TextComponent text={this.state.text} />
+                <div id="imageContainer">
+                    <Visuals bilde={this.state.visual} tabInfo={this.props.typer} />
+                </div>
             </div>
         );
     }
@@ -72,8 +76,8 @@ class Tab extends Component {
      * Fetches the sound and stores it in the state.
      * @private
      */
-    _getAudioFile() {
-        let name = this.state.audio.name;
+    _getAudioFile(sound_name) {
+        let name = sound_name;
 
         // validation 1
         // if name is null no option has been selected.
@@ -88,9 +92,10 @@ class Tab extends Component {
         }
 
         let file_name = name.toLowerCase();
-        console.log(this.props.id ,"filename: ", file_name);
+        console.log(this.props.id, "filename: ", file_name);
         let file_path = "./media/audio/" + file_name;
 
+        // TODO check if necessary
         let myInit = {
             method: "GET",
             headers: new Headers(),
@@ -132,12 +137,12 @@ class Tab extends Component {
             .then(res => {
                 let poemData = res.data.slice(number-1, number);
                 Data = poemData[0];
-                    this.setState({
-                        text: {
-                            file: Data,
-                            textType: type,
-                            selectionNumber: number,
-                        }
+                this.setState({
+                    text: {
+                        file: Data,
+                        textType: type,
+                        selectionNumber: number,
+                    }
                 });
             });
     }

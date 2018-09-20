@@ -1,24 +1,23 @@
-import React, {Component} from 'react';
+import React, { Component } from "react";
 
 /**
  * Component that plays chosen audio when one
  * presses the button on this component.
  */
 class AudioComponent extends Component {
-
-    render() {
-        return (
-            <div>
-                <audio src={this.props.audio.file} controls>
-                    Audio not supported in this browser.
-                </audio>
-            </div>
-        )
-    }
+  render() {
+    return (
+      <div id="AudioComponent">
+        <p>{this.props.audio.name}</p>
+        <audio src={this.props.audio.file} controls>
+          Audio not supported in this browser.
+        </audio>
+      </div>
+    );
+  }
 }
 
 //TODO: remove console.logs
-
 
 export default AudioComponent;
 
