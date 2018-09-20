@@ -6,11 +6,13 @@ import axios from "axios";
 
 /**
  * Tab component that takes care of text, visuals and audio.
+ * Development Status: Unfinished
  */
 class Tab extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            // structure of state
             audio: {
                 name: null,
                 file: null
@@ -23,24 +25,44 @@ class Tab extends Component {
             }
         };
 
-        this.oldSoundType = {};
         this.oldTextType = {};
         this.oldImageType = {};
         this._getAudioFile = this._getAudioFile.bind(this);
         this._getTextFile = this._getTextFile.bind(this);
-
+        this._updateSubComponents = this._updateSubComponents.bind(this);
     }
 
 
-    render() {
 
-        if (this.oldSoundType !== this.props.soundType) {
+    componentDidMount() {
+        // FIXME update at start of initial render
+        // current setup not work.
+        // this._updateSubComponents();
+
+        // sound
+        let unique = Math.round(Math.random() * 4 + 0.5);
+        let sound_name = this.props.soundType + unique.toString();
+        this._getAudioFile(sound_name);
+    }
+
+
+    componentDidUpdate(prevProps) {
+        this._updateSubComponents(prevProps);
+    }
+
+
+    // to be used in componentDidUpdate
+    _updateSubComponents(prevProps) {
+        if (prevProps.soundType !== this.props.soundType) {
             let unique = Math.round(Math.random() * 4 + 0.5);
-            let sound_name  = this.props.soundType + unique.toString();
+            let sound_name = this.props.soundType + unique.toString();
             this._getAudioFile(sound_name);
         }
-        this.oldSoundType = this.props.soundType;
 
+        // TODO fix same feature for image and text
+        // so it's not in render.
+    }
+    render() {
         if (this.oldImageType !== this.props.typer.imageType) {
             let unique = Math.round(Math.random() * 4 + 0.5);
             this.state.visual = this.props.typer.imageType + unique.toString();
@@ -61,16 +83,16 @@ class Tab extends Component {
         return (
             <div className={this.props.activeStatus}>
                 <AudioComponent
-                    audio={this.state.audio}
-                    getAudioFile={this._getAudioFile}
-                />
-                <TextComponent text={this.state.text} />
+                    audio={this.state.audio}/>
+                <TextComponent
+                    text={this.state.text}/>
                 <div id="imageContainer">
-                    <Visuals bilde={this.state.visual} tabInfo={this.props.typer} />
+                    <Visuals bilde={this.state.visual}/>
                 </div>
             </div>
         );
     }
+
 
     /**
      * Fetches the sound and stores it in the state.
@@ -92,20 +114,11 @@ class Tab extends Component {
         }
 
         let file_name = name.toLowerCase();
-        console.log(this.props.id, "filename: ", file_name);
         let file_path = "./media/audio/" + file_name;
-
-        // TODO check if necessary
-        let myInit = {
-            method: "GET",
-            headers: new Headers(),
-            mode: "cors",
-            cache: "default"
-        };
 
         // fetches the sound file and updates the
         // state so that the AudioComponent gets updated.
-        fetch(file_path, myInit)
+        fetch(file_path)
             .then(response => {
                 return response.blob();
             })
@@ -118,13 +131,9 @@ class Tab extends Component {
                         file: obj
                     }
                 });
-
-                console.log("Changed state audio to: " + this.state.audio.file);
-                return true;
             })
             .catch(error => {
                 console.log(error);
-                return false;
             });
     }
 
