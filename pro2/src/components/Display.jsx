@@ -15,8 +15,8 @@ class Display extends Component {
         this.oldState = {};
 
         this._onNav = this._onNav.bind(this);
+        this._getInfoFromCategories = this._getInfoFromCategories.bind(this);
     }
-
 
     _getInfoFromCategories = info => {
         if (info.startsWith("Text")) {

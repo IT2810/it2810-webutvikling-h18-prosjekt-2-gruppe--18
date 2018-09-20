@@ -11,17 +11,23 @@ class Tab extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            // structure of state
             audio: {
                 name: null,
                 file: null
             },
+
             visual: "",
+
             text: {
                 category: "",
                 selectionNumber: null
             }
         };
+
         this._getAudioFile = this._getAudioFile.bind(this);
+        this._updateVisual = this._updateVisual.bind(this);
+
 
         this.oldSoundType = {};
         this.oldstatus = {};
@@ -29,7 +35,6 @@ class Tab extends Component {
     }
 
     render() {
-
 
         // sound
         if (this.oldSoundType !== this.props.soundType) {
@@ -39,17 +44,16 @@ class Tab extends Component {
         }
         this.oldSoundType = this.props.soundType;
 
-
         // image
         if (this.oldImageType !== this.props.typer.imageType) {
             let unique = Math.round(Math.random() * 4 + 0.5);
+            // this._updateVisual(this.props.typer.imageType, unique);
             this.state.visual = this.props.typer.imageType + unique.toString();
             this.state.visual = this.state.visual.toLocaleLowerCase();
             console.log("forandret: ", this.state.visual);
         }
 
         this.oldImageType = this.props.typer.imageType;
-
 
         // text
         if(this.oldstatus.textType !== this.props.typer.textType) {
@@ -75,6 +79,32 @@ class Tab extends Component {
     }
 
     /**
+     * Not used right now
+     * @param type
+     * @param num
+     * @private
+     */
+    _updateVisual(type, num) {
+        this.setState({
+            visual: (type + num).toLowerCase()
+        })
+    }
+
+    /**
+     * Not in use.
+     * @param type
+     * @param num
+     * @private
+     */
+    _updateText(type, num) {
+        this.setState(() => {
+            text: {
+
+            }
+        })
+    }
+
+    /**
      * Fetches the sound and stores it in the state.
      * @private
      */
@@ -94,7 +124,6 @@ class Tab extends Component {
         }
 
         let file_name = name.toLowerCase();
-        console.log(this.props.id ,"filename: ", file_name);
         let file_path = "./media/audio/" + file_name;
 
         // TODO check if necessary
@@ -120,8 +149,6 @@ class Tab extends Component {
                         file: obj
                     }
                 });
-
-                console.log("Changed state audio to: " + this.state.audio.file);
                 return true;
             })
             .catch(error => {
