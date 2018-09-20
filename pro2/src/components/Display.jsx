@@ -39,39 +39,41 @@ class Display extends Component {
         }));
     };
 
+
     render() {
         return (
             <div>
-                <Navigation onNav={this._onNav}/>
-                <Category onChangeValue={this._getInfoFromCategories}/>
+                <Navigation onNav={this._onNav} />
+                <div id="tab-container">
+                    <Tab id="tab1"
+                         soundType={this.state.soundType}
+                         typer={this.state}
+                         activeStatus = {this.state.view === "tab1"
+                             ? 'tab-active' : 'tab-inactive'}
+                         name="Tab 1"/>
 
-                <Tab id="tab1"
-                   soundType={this.state.soundType}
-                   typer={this.state}
-                   activeStatus = {this.state.view === "tab1"
-                       ? '' : 'tab-inactive'}
-                   name="Tab 1"/>
+                    <Tab id="tab2"
+                         soundType={this.state.soundType}
+                         typer={this.state}
+                         activeStatus = {this.state.view === "tab2"
+                             ? 'tab-active' : 'tab-inactive'}
+                         name="Tab 2"/>
 
-                <Tab id="tab2"
-                   soundType={this.state.soundType}
-                   typer={this.state}
-                   activeStatus = {this.state.view === "tab2"
-                       ? '' : 'tab-inactive'}
-                   name="Tab 2"/>
+                    <Tab id="tab3"
+                         soundType={this.state.soundType}
+                         typer={this.state}
+                         activeStatus = {this.state.view === "tab3"
+                             ? 'tab-active' : 'tab-inactive'}
+                         name="Tab 3"/>
 
-                <Tab id="tab3"
-                   soundType={this.state.soundType}
-                   typer={this.state}
-                   activeStatus = {this.state.view === "tab3"
-                       ? '' : 'tab-inactive'}
-                   name="Tab 3"/>
-
-                <Tab id="tab4"
-                   soundType={this.state.soundType}
-                   typer={this.state}
-                   activeStatus = {this.state.view === "tab4"
-                       ? '' : 'tab-inactive'}
-                   name="Tab 4"/>
+                    <Tab id="tab4"
+                         soundType={this.state.soundType}
+                         typer={this.state}
+                         activeStatus = {this.state.view === "tab4"
+                             ? 'tab-active' : 'tab-inactive'}
+                         name="Tab 4"/>
+                    <Category onChangeValue={this._getInfoFromCategories}/>
+                </div>
             </div>
         )
     }

@@ -1,13 +1,3 @@
-.App {
-  text-align: center;
-}
-
-.App > div {
-  display: grid;
-  grid-template-columns: 25% 25% 25% 25%;
-  grid-template-rows: 20% 50% 30%;
-}
-
 body {
   background-color: rgb(214, 214, 214);
 }
@@ -17,11 +7,8 @@ body {
   height: 80px;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+#tab-container {
+  display: flex;
 }
 
 div > ul > li {
@@ -40,10 +27,6 @@ div > ul {
   padding: 0;
   overflow: hidden;
   background-color: #333333;
-  grid-column-start: 1;
-  grid-column-end: 5;
-  grid-row-start: 1;
-  grid-row-end: 2;
 }
 
 li > a {
@@ -58,25 +41,26 @@ li > a:hover {
   background-color: #111111;
 }
 
-.tab-content {
-  grid-column-start: 1;
-  grid-column-end: 4;
-  grid-row-start: 2;
-  grid-row-end: 4;
-}
-
 #Category-container {
-  border: 1px solid rgb(126, 126, 126);
+  border: 1px solid rgb(0, 0, 0);
+  border-left: 0;
+  border-top: 0;
   padding: 10px;
-  margin: 10px;
-  float: right;
-  grid-column-start: 4;
-  grid-column-end: 5;
+  min-width: 120px;
 }
 
-.tabs {
-  display: grid;
-  margin: 1em 5em 0em 5em;
+.tab-active,
+.tab-inactive {
+  width: 600px;
+  border: 1px solid rgb(0, 0, 0);
+  border-left: 0;
+  border-top: 0;
+}
+.tab-active > div,
+.tab-inactive > div {
+  border: 1px solid rgb(0, 0, 0);
+  margin: 10px;
+  padding: 10px;
 }
 
 .tab-list {
@@ -98,64 +82,37 @@ li > a:hover {
   border-width: 1px 1px 0 1px;
 }
 
-.tab-content {
-  margin: 2em 5em 0em 5em;
-  font-family: Verdana, sans-serif;
-  font-style: normal;
-}
 .tab-inactive {
   display: none;
 }
 
-<<<<<<< HEAD
 
-=======
 .tab-active {
   display: block;
-  margin: 2em 5em 0em 5em;
   font-family: Verdana, sans-serif;
   font-style: normal;
 }
->>>>>>> Development
 
 .bilde > svg {
-  position: absolute;
-  width: 200px;
-  height: 200px;
-  border-style: groove;
-  padding: 5px;
-  margin: 5px;
-  background-color: white;
+  width: auto;
+  height: auto;
 }
-
 .bilde {
-  position: relative;
-  margin: auto;
-  display: block;
-  right: 100px;
+  height: 200px;
+  width: 200px;
+  margin: 0 auto;
 }
 
-.App-title {
-  font-size: 1.5em;
+#AudioComponent > p,
+#AudioComponent > audio,
+#AudioComponent {
+  text-align: center;
+  align-content: center;
 }
 
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
 .diktTekst {
   text-align: center;
-  background-color: red;
   margin: auto;
-  width: 50%;
 }
 
 .diktTittel {
@@ -179,19 +136,6 @@ Masse av denne stylingen trengs ikke lengre, brukt tutorial og mye av det gjelde
   padding-top: 60px;
 }
 
-.sidenav a {
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #818181;
-  display: block;
-  transition: 0.3s;
-}
-
-.sidenav a:hover {
-  color: #f1f1f1;
-}
-
 .sidenav .closebtn {
   position: absolute;
   top: 0;
@@ -205,7 +149,7 @@ Media Queries som sjekker om skjermen er både for liten og for stor, for sto gi
 siden eller fjerner den kaneppen så vi har standaren
  */
 @media only screen and (max-width: 600px) {
-  #nonMobileDiv {
+  #Category-container {
     display: none;
   }
   #sidenavOpenBtn {

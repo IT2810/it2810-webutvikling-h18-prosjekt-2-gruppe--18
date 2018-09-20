@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import AudioComponent from "./AudioComponent.js";
 import TextComponent from "./TextComponent.jsx";
 import Visuals from "./Visuals";
+import axios from "axios";
 
 /**
  * Tab component that takes care of text, visuals and audio.
@@ -19,24 +20,31 @@ class Tab extends Component {
             visual: "",
             text: {
                 category: "",
-                selectionNumber: null
+                selectionNumber: null,
+                file: []
             }
         };
 
-        this._getAudioFile = this._getAudioFile.bind(this);
-        this._updateSubComponents = this._updateSubComponents.bind(this);
-
-
-        this.oldSoundType = {};
-        this.oldstatus = {};
+        this.oldTextType = {};
         this.oldImageType = {};
+        this._getAudioFile = this._getAudioFile.bind(this);
+        this._getTextFile = this._getTextFile.bind(this);
+        this._updateSubComponents = this._updateSubComponents.bind(this);
     }
+
+
 
     componentDidMount() {
         // FIXME update at start of initial render
         // current setup not work.
-        this._updateSubComponents();
+        // this._updateSubComponents();
+
+        // sound
+        let unique = Math.round(Math.random() * 4 + 0.5);
+        let sound_name = this.props.soundType + unique.toString();
+        this._getAudioFile(sound_name);
     }
+
 
     componentDidUpdate(prevProps) {
         this._updateSubComponents(prevProps);
@@ -54,9 +62,7 @@ class Tab extends Component {
         // TODO fix same feature for image and text
         // so it's not in render.
     }
-
     render() {
-        // image
         if (this.oldImageType !== this.props.typer.imageType) {
             let unique = Math.round(Math.random() * 4 + 0.5);
             this.state.visual = this.props.typer.imageType + unique.toString();
@@ -66,24 +72,23 @@ class Tab extends Component {
 
         this.oldImageType = this.props.typer.imageType;
 
-        // text
-        if(this.oldstatus.textType !== this.props.typer.textType) {
+        if(this.oldTextType !== this.props.typer.textType) {
             let unique = Math.round(Math.random() * 4 + 0.5);
-            this.state.text.selectionNumber = unique;
-            this.state.text.category = this.props.typer.textType;
-            console.log("forandret: ", this.state.text.category);
+            let CategoryType = this.props.typer.textType;
+            this._getTextFile(unique, CategoryType);
         }
 
-        this.oldstatus.textType = this.props.typer.textType;
+        this.oldTextType = this.props.typer.textType;
 
         return (
             <div className={this.props.activeStatus}>
-                <h1>{this.props.name}</h1>
                 <AudioComponent
                     audio={this.state.audio}/>
                 <TextComponent
                     text={this.state.text}/>
-                <Visuals bilde={this.state.visual}/>
+                <div id="imageContainer">
+                    <Visuals bilde={this.state.visual}/>
+                </div>
             </div>
         );
     }
@@ -130,6 +135,25 @@ class Tab extends Component {
             .catch(error => {
                 console.log(error);
             });
-  }
+    }
+
+    _getTextFile(number, type){
+        let Data = [];
+        let url = ('./media/TextJSON/'+type
+            +'Dikt.json');
+
+        axios.get(url)
+            .then(res => {
+                let poemData = res.data.slice(number-1, number);
+                Data = poemData[0];
+                this.setState({
+                    text: {
+                        file: Data,
+                        textType: type,
+                        selectionNumber: number,
+                    }
+                });
+            });
+    }
 }
 export default Tab;

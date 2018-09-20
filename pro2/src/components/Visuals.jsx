@@ -39,8 +39,8 @@ class Visuals extends Component {
   render() {
     this.setImage();
     return (
-      <div>
-        <div id={this.state.id} className="bilde" alt="feil url" />
+      <div className="bilde">
+        <div id={this.state.id} alt="feil url" />
       </div>
     );
   }

@@ -12,42 +12,17 @@ export default class TextComponent extends React.Component {
      */
     constructor(props) {
         super(props);
-        this.state = {
-            dikt: [],
-        };
-
-    }
-
-    /**
-     * Henter inn JSON filen med diktene våre og setter dikt arrayen til å holde på det ene dikten som blir valgt
-     */
-    componentDidMount() {
-        axios.get('./media/TextJSON/'+this.props.text.category
-        +'Dikt.json')
-            .then(res => {
-                const poemData = res.data.slice(this.props.text.selectionNumber-1, this.props.text.selectionNumber);
-                this.setState({dikt: poemData});
-            });
-
     }
 
     render() {
+
         return (
-                <React.Fragment>
-                {this.state.dikt.map(poem => {
-                        return poem.id === this.props.text.selectionNumber ?
-                            <div key={poem.id} className={"diktTekst"}>
-                            <p className={"diktTittel"} >{poem.tittel}</p>
-                            <p>{poem.firstLine}</p>
-                            <p>{poem.secondLine}</p>
-                            <p>{poem.thirdLine}</p>
-                            </div>
-                            :
-                            null
-                    }
+                <div key={this.props.text.file["id"]} className={"diktTekst"}>
+                <p className={"diktTittel"} >{this.props.text.file["tittel"]}</p>
+                <p>{this.props.text.file["firstLine"]}</p>
+                <p>{this.props.text.file["secondLine"]}</p>
+                <p>{this.props.text.file["thirdLine"]}</p>
+                </div>
                 )
-                }
-                </React.Fragment>
-        )
     }
 }

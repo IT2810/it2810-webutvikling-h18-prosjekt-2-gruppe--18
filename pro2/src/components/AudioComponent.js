@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from "react";
 
 /**
  * Component that plays chosen audio when one
@@ -9,9 +9,10 @@ class AudioComponent extends Component {
     constructor(props) {
         super(props);
     }
+
     render() {
         return (
-            <div>
+            <div id="AudioComponent">
                 <p>
                     {this.props.audio.name}
                 </p>
@@ -23,8 +24,8 @@ class AudioComponent extends Component {
     }
 }
 
-//TODO: remove console.logs
 
+//TODO: remove console.logs
 
 export default AudioComponent;
 
