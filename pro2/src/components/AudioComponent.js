@@ -6,7 +6,9 @@ import React, {Component} from 'react';
  * Development Status: Completed
  */
 class AudioComponent extends Component {
-
+    constructor(props) {
+        super(props);
+    }
     render() {
         return (
             <div>

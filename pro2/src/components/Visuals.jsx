@@ -3,19 +3,44 @@ import $ from "jquery";
 import axios from "axios";
 
 class Visuals extends Component {
-
-
-  setImage(name) {
-    axios.get(`./media/images/` + name + ".svg").then(response => {
-      $("#bilde").html(response.data);
+  state = {
+    id: null
+  };
+  setImage() {
+    axios.get(`./media/images/` + this.props.bilde + ".svg").then(response => {
+      let ord = "#" + this.state.id;
+      $(ord).html(response.data);
     });
   }
 
+  componentDidMount() {
+    this.guidGenerator();
+  }
+
+  guidGenerator() {
+    var S4 = function() {
+      return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+    };
+    this.state.id =
+      S4() +
+      S4() +
+      "-" +
+      S4() +
+      "-" +
+      S4() +
+      "-" +
+      S4() +
+      "-" +
+      S4() +
+      S4() +
+      S4();
+  }
+
   render() {
-    this.setImage(this.props.bilde);
+    this.setImage();
     return (
       <div>
-        <div id="bilde">Faulty image url</div>
+        <div id={this.state.id} className="bilde" alt="feil url" />
       </div>
     );
   }

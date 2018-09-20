@@ -16,9 +16,7 @@ class Tab extends Component {
                 name: null,
                 file: null
             },
-
             visual: "",
-
             text: {
                 category: "",
                 selectionNumber: null
@@ -26,7 +24,7 @@ class Tab extends Component {
         };
 
         this._getAudioFile = this._getAudioFile.bind(this);
-        this._updateVisual = this._updateVisual.bind(this);
+        this._updateSubComponents = this._updateSubComponents.bind(this);
 
 
         this.oldSoundType = {};
@@ -34,20 +32,33 @@ class Tab extends Component {
         this.oldImageType = {};
     }
 
-    render() {
+    componentDidMount() {
+        // FIXME update at start of initial render
+        // current setup not work.
+        this._updateSubComponents();
+    }
 
-        // sound
-        if (this.oldSoundType !== this.props.soundType) {
+    componentDidUpdate(prevProps) {
+        this._updateSubComponents(prevProps);
+    }
+
+
+    // to be used in componentDidUpdate
+    _updateSubComponents(prevProps) {
+        if (prevProps.soundType !== this.props.soundType) {
             let unique = Math.round(Math.random() * 4 + 0.5);
             let sound_name = this.props.soundType + unique.toString();
             this._getAudioFile(sound_name);
         }
-        this.oldSoundType = this.props.soundType;
 
+        // TODO fix same feature for image and text
+        // so it's not in render.
+    }
+
+    render() {
         // image
         if (this.oldImageType !== this.props.typer.imageType) {
             let unique = Math.round(Math.random() * 4 + 0.5);
-            // this._updateVisual(this.props.typer.imageType, unique);
             this.state.visual = this.props.typer.imageType + unique.toString();
             this.state.visual = this.state.visual.toLocaleLowerCase();
             console.log("forandret: ", this.state.visual);
@@ -69,40 +80,14 @@ class Tab extends Component {
             <div className={this.props.activeStatus}>
                 <h1>{this.props.name}</h1>
                 <AudioComponent
-                    audio={this.state.audio}
-                />
+                    audio={this.state.audio}/>
                 <TextComponent
                     text={this.state.text}/>
-                <Visuals bilde={this.state.visual} />
+                <Visuals bilde={this.state.visual}/>
             </div>
         );
     }
 
-    /**
-     * Not used right now
-     * @param type
-     * @param num
-     * @private
-     */
-    _updateVisual(type, num) {
-        this.setState({
-            visual: (type + num).toLowerCase()
-        })
-    }
-
-    /**
-     * Not in use.
-     * @param type
-     * @param num
-     * @private
-     */
-    _updateText(type, num) {
-        this.setState(() => {
-            text: {
-
-            }
-        })
-    }
 
     /**
      * Fetches the sound and stores it in the state.
@@ -126,17 +111,9 @@ class Tab extends Component {
         let file_name = name.toLowerCase();
         let file_path = "./media/audio/" + file_name;
 
-        // TODO check if necessary
-        let myInit = {
-            method: "GET",
-            headers: new Headers(),
-            mode: "cors",
-            cache: "default"
-        };
-
         // fetches the sound file and updates the
         // state so that the AudioComponent gets updated.
-        fetch(file_path, myInit)
+        fetch(file_path)
             .then(response => {
                 return response.blob();
             })
@@ -149,12 +126,10 @@ class Tab extends Component {
                         file: obj
                     }
                 });
-                return true;
             })
             .catch(error => {
                 console.log(error);
-                return false;
             });
-    }
+  }
 }
 export default Tab;
