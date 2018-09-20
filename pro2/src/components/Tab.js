@@ -58,13 +58,14 @@ class Tab extends Component {
 
     return (
       <div className={this.props.activeStatus}>
-        <h1>{this.props.name}</h1>
         <AudioComponent
           audio={this.state.audio}
           getAudioFile={this._getAudioFile}
         />
         <TextComponent text={this.state.text} />
-        <Visuals bilde={this.state.visual} tabInfo={this.props.typer} />
+        <div id="imageContainer">
+          <Visuals bilde={this.state.visual} tabInfo={this.props.typer} />
+        </div>
       </div>
     );
   }

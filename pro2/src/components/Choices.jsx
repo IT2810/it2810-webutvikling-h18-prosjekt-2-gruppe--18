@@ -6,7 +6,6 @@ class Choices extends Component {
     this._getValueChecked = this._getValueChecked.bind(this);
   }
 
-
   _getValueChecked() {
     let checked = document.querySelector(
       'input[name="' + this.props.type + '"]:checked'
@@ -14,13 +13,15 @@ class Choices extends Component {
     this.props.onChangeValue(checked);
   }
 
+  _storForbokstav() {
+    let ord = this.props.type;
+    return ord.charAt(0).toUpperCase() + ord.slice(1);
+  }
+
   render() {
     return (
       <div>
-        <h3>
-          Choose {this.props.type}
-          -type
-        </h3>
+        <h3>{this._storForbokstav()} type</h3>
         <form onChange={() => this._getValueChecked()}>
           <input
             type="radio"
