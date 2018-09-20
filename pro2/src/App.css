@@ -107,14 +107,14 @@ li > a:hover {
   display: none;
 }
 
-.tab-active  {
+.tab-active {
   display: block;
   margin: 2em 5em 0em 5em;
   font-family: Verdana, sans-serif;
   font-style: normal;
 }
 
-#bilde > svg {
+.bilde > svg {
   position: absolute;
   width: 200px;
   height: 200px;
@@ -124,7 +124,7 @@ li > a:hover {
   background-color: white;
 }
 
-#bilde {
+.bilde {
   position: relative;
   margin: auto;
   display: block;
@@ -162,7 +162,6 @@ li > a:hover {
 Masse av denne stylingen trengs ikke lengre, brukt tutorial og mye av det gjelder ikke oss.
 */
 
-
 .sidenav {
   height: 100%;
   width: 0;
@@ -197,23 +196,22 @@ Masse av denne stylingen trengs ikke lengre, brukt tutorial og mye av det gjelde
   margin-left: 50px;
 }
 
-
 /*
 Media Queries som sjekker om skjermen er både for liten og for stor, for sto gir den visning av desktop
 siden eller fjerner den kaneppen så vi har standaren
  */
-@media only screen and (max-width: 600px){
-  #nonMobileDiv{display: none}
-  #sidenavOpenBtn{
-    font-size:30px;
-    cursor:pointer
+@media only screen and (max-width: 600px) {
+  #nonMobileDiv {
+    display: none;
+  }
+  #sidenavOpenBtn {
+    font-size: 30px;
+    cursor: pointer;
   }
 }
 
-
-
-@media only screen and (min-width: 601px){
-  #sidenavOpenBtn{
+@media only screen and (min-width: 601px) {
+  #sidenavOpenBtn {
     display: none;
   }
 }
