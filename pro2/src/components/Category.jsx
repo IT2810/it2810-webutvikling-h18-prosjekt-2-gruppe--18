@@ -25,18 +25,6 @@ class Category extends Component {
     this.props.onChangeValue("Text: " + e);
   };
 
-  resize = e => {
-    let size = window.innerWidth;
-    if (size <= 600) {
-      this.setState({
-        mobile: true
-      });
-    } else {
-      this.setState({
-        mobile: false
-      });
-    }
-  };
   //Closes the navigation panel
   closeNav = e => {
     e.preventDefault();
@@ -88,7 +76,7 @@ class Category extends Component {
           </div>
       );
     }
-  }
+}
 }
 
 export default Category;
