@@ -11,15 +11,10 @@ class Display extends Component {
             textType: "Dog",
             imageType: "Dog",
             soundType: "Dog",
-            visitedTabs: []
         };
 
         this._onNav = this._onNav.bind(this);
         this._getInfoFromCategories = this._getInfoFromCategories.bind(this);
-
-
-        // TODO: implement update-tab-on-active-selection
-
     }
 
     _getInfoFromCategories = info => {
@@ -33,10 +28,6 @@ class Display extends Component {
             this.setState({soundType: info.substring(7, info.length)});
         }
 
-        // TODO clear the list of visited tabs
-        this.setState(() => ({
-            visitedTabs: []
-        }));
     };
 
 
@@ -79,9 +70,8 @@ class Display extends Component {
     }
 
     _onNav(current_view) {
-        this.setState(prevState => ({
+        this.setState(() => ({
             view: current_view,
-            visitedTabs: [...prevState.visitedTabs, current_view]
         }));
     }
 }
