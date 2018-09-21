@@ -1,5 +1,5 @@
 body {
-  background-color: rgb(214, 214, 214);
+  background-color: #5CDB95;
 }
 
 .App-logo {
@@ -9,6 +9,9 @@ body {
 
 #tab-container {
   display: flex;
+}
+#navBar{
+  background-color: #064e91;
 }
 
 div > ul > li {
@@ -20,13 +23,16 @@ div > ul > li {
   text-decoration: none;
   float: left;
 }
+div > ul > li > a{
+  color: #EDF5E1;
+}
 
 div > ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #333333;
+
 }
 
 li > a {
@@ -38,33 +44,25 @@ li > a {
 }
 
 li > a:hover {
-  background-color: #111111;
-}
-
-#Category-container {
-  border: 1px solid rgb(0, 0, 0);
-  border-left: 0;
-  border-top: 0;
-  padding: 10px;
-  min-width: 120px;
+  background-color: #04305a;
 }
 
 .tab-active,
 .tab-inactive {
-  width: 600px;
-  border: 1px solid rgb(0, 0, 0);
+  width: 70%;
+  border: 1px solid #05386B;
   border-left: 0;
   border-top: 0;
 }
 .tab-active > div,
 .tab-inactive > div {
-  border: 1px solid rgb(0, 0, 0);
+  border: 1px solid #05386B;
   margin: 10px;
   padding: 10px;
 }
 
 .tab-list {
-  border-bottom: 1px solid rgb(0, 0, 0);
+  border-bottom: 1px solid #05386B;
   padding-left: 0;
   display: flex;
 }
@@ -78,7 +76,7 @@ li > a:hover {
 
 .tab-list-active {
   background-color: rgb(148, 148, 148);
-  border: solid rgb(0, 0, 0);
+  border: solid #05386B;
   border-width: 1px 1px 0 1px;
 }
 
@@ -109,57 +107,16 @@ li > a:hover {
   text-align: center;
   align-content: center;
 }
-
+.diktTekst > p{
+  font-size: 2vw;
+}
 .diktTekst {
   text-align: center;
   margin: auto;
+  font-size: 1vw;
 }
+
 
 .diktTittel {
   font-style: italic;
-}
-
-/*/////////////////////////////////////////////////
-Masse av denne stylingen trengs ikke lengre, brukt tutorial og mye av det gjelder ikke oss.
-*/
-
-.sidenav {
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  right: 0;
-  background-color: #111;
-  overflow-x: hidden;
-  transition: 0.5s;
-  padding-top: 60px;
-}
-
-.sidenav .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
-}
-
-/*
-Media Queries som sjekker om skjermen er både for liten og for stor, for sto gir den visning av desktop
-siden eller fjerner den kaneppen så vi har standaren
- */
-@media only screen and (max-width: 600px) {
-  #Category-container {
-    display: none;
-  }
-  #sidenavOpenBtn {
-    font-size: 30px;
-    cursor: pointer;
-  }
-}
-
-@media only screen and (min-width: 601px) {
-  #sidenavOpenBtn {
-    display: none;
-  }
 }

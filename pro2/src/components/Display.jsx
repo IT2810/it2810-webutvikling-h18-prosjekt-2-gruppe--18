@@ -11,7 +11,6 @@ class Display extends Component {
             textType: "Dog",
             imageType: "Dog",
             soundType: "Dog",
-            visitedTabs: []
         };
 
         this._onNav = this._onNav.bind(this);
@@ -43,7 +42,7 @@ class Display extends Component {
     render() {
         return (
             <div>
-                <Navigation onNav={this._onNav} />
+                <Navigation onNav={this._onNav}/>
                 <div id="tab-container">
                     <Tab id="tab1"
                          soundType={this.state.soundType}
@@ -72,7 +71,7 @@ class Display extends Component {
                          activeStatus = {this.state.view === "tab4"
                              ? 'tab-active' : 'tab-inactive'}
                          name="Tab 4"/>
-                    <Category onChangeValue={this._getInfoFromCategories}/>
+                    <Category statTypes={this.state} onChangeValue={this._getInfoFromCategories}/>
                 </div>
             </div>
         )
