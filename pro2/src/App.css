@@ -45,6 +45,7 @@ li > a {
 
 li > a:hover {
   background-color: #04305a;
+  border-radius: 15px;
 }
 
 .tab-active,

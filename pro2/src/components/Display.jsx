@@ -31,11 +31,6 @@ class Display extends Component {
         if (info.startsWith("Sound")) {
             this.setState({soundType: info.substring(7, info.length)});
         }
-
-        // TODO clear the list of visited tabs
-        this.setState(() => ({
-            visitedTabs: []
-        }));
     };
 
 
@@ -80,7 +75,6 @@ class Display extends Component {
     _onNav(current_view) {
         this.setState(prevState => ({
             view: current_view,
-            visitedTabs: [...prevState.visitedTabs, current_view]
         }));
     }
 }
