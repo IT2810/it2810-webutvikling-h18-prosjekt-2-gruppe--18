@@ -1,30 +1,30 @@
 [
   {
     "id" : 1,
-    "tittel": "Kattemannneen",
+    "tittel": "Katten med gummi",
     "firstLine": "En katt spiser gummi",
     "secondLine": "Gummi er godt",
     "thirdLine": "Men de kan ikke overleve dette"
   },
   {
     "id": 2,
-    "tittel": "Kattedama",
-    "firstLine": "asdlasdnksajd",
-    "secondLine": "fkdsfflknsdfldnsdflfdnsl",
-    "thirdLine": "sdksdfksdkføjsdfkøsdfkødf"
+    "tittel": "Kattelek",
+    "firstLine": "Katter liker fluffy ting",
+    "secondLine": "En hårball her og der",
+    "thirdLine": "Men hvem er hårballen?"
   },
   {
     "id": 3,
-    "tittel": "KatteBarna",
-    "firstLine": "dsødkfkøsdkøsdfkøsdføkdsfkdksø",
-    "secondLine": "sødfmdsfløsdfølsdømdøkkdsøt",
-    "thirdLine": "aaaaaaaaaaaaaaaaaaaaaaaaa"
+    "tittel": "Barnas katter",
+    "firstLine": "En rød",
+    "secondLine": "En blå",
+    "thirdLine": "Så mange en kan få!"
   },
   {
     "id": 4,
-    "tittel": "KattteDød",
-    "firstLine": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
-    "secondLine": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
-    "thirdLine": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    "tittel": "Katten i havet",
+    "firstLine": "Vann er kaldt",
+    "secondLine": "Vann er bløtt",
+    "thirdLine": "Kan ikke svømme"
   }
 ]

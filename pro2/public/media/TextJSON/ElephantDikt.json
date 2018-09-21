@@ -1,30 +1,30 @@
 [
   {
     "id": 1,
-    "tittel": "ElefantDama",
-    "firstLine": "OOOOOOOOOOOOOOOO",
-    "secondLine": "OOOOOOOOOOOOOOOO",
-    "thirdLine": "OOOOOOOOOOOOOOOO"
+    "tittel": "Elefanten i Thailand",
+    "firstLine": "Endelig ferie og sol",
+    "secondLine": "Sol og vind neimen som de svinn",
+    "thirdLine": "Sol vinner alltid"
   },
   {
     "id": 2,
-    "tittel": "Elefantmannen",
-    "firstLine": "WWWWWWWWWWWWWWWWWWWWW",
-    "secondLine": "WWWWWWWWWWWWWWWWWWWWW",
-    "thirdLine": "WWWWWWWWWWWWWWWWWWWWW"
+    "tittel": "Elefanten og musa",
+    "firstLine": "en mus *squiiiiiiiiiiiiiiiiik",
+    "secondLine": "elefanten ser: *Bwhaaaaaaaa*",
+    "thirdLine": "få den vekk."
   },
   {
     "id": 3,
-    "tittel": "ElefantBarna",
-    "firstLine": ")))))))))))))))))))))",
-    "secondLine": ")))))))))))))))))))))",
-    "thirdLine": ")))))))))))))))))))))"
+    "tittel": "Elefanten elsker frukt",
+    "firstLine": "Frukt som er søt er best",
+    "secondLine": "I vest er da frukten best",
+    "thirdLine": "Så i øst er det nå høst!"
   },
   {
     "id": 4,
-    "tittel": "ElefantDød",
-    "firstLine": "QQQQQQQQQQQQQQQQQQQQQQQQQQQQ",
-    "secondLine": "QQQQQQQQQQQQQQQQQQQQQQQQQQQQ",
-    "thirdLine": "QQQQQQQQQQQQQQQQQQQQQQQQQQQQ"
+    "tittel": "Elefant på tur",
+    "firstLine": "Jeg faant jeg fant",
+    "secondLine": "en annen elefant,",
+    "thirdLine": "Hvem kan si hva de andre fant?"
   }
 ]
