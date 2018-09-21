@@ -1,5 +1,10 @@
 import React, { Component } from "react";
 
+/**
+ * This is a sub-component that handles the input radio buttons.
+ * By creating this component we can easily reuse it several times
+ * in the parent component (in this case, it's the Category component).
+ */
 class Choices extends Component {
   constructor(props) {
     super(props);
@@ -7,6 +12,10 @@ class Choices extends Component {
 
   }
 
+    /**
+     * Gets the value from the input element.
+     * @private
+     */
   _getValueChecked() {
     let checked = document.querySelector(
       'input[name="' + this.props.type + '"]:checked'
@@ -14,6 +23,11 @@ class Choices extends Component {
     this.props.onChangeValue(checked);
   }
 
+    /**
+     * Simple function use to get capital letter of the words.
+     * @returns {string}
+     * @private
+     */
   _storForbokstav() {
     let ord = this.props.type;
     return ord.charAt(0).toUpperCase() + ord.slice(1);

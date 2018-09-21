@@ -20,9 +20,16 @@ class Display extends Component {
             soundType: "Dog",
         };
 
+
         this._onNav = this._onNav.bind(this);
         this._getInfoFromCategories = this._getInfoFromCategories.bind(this);
     }
+
+    componentDidMount(){
+        document.getElementById(this.state.view).style.backgroundColor = "#032445";
+        document.getElementById(this.state.view).style.borderRadius = "15px";
+    }
+
 
     /**
      * Retrieves info from Category.jsx (and Choice.jsx)
@@ -93,6 +100,11 @@ class Display extends Component {
      * @private
      */
     _onNav(current_view) {
+
+        document.getElementById(this.state.view).style.backgroundColor = "transparent";
+        document.getElementById(current_view).style.backgroundColor = "#032445";
+        document.getElementById(current_view).style.borderRadius = "15px";
+            
         this.setState(() => ({
             view: current_view,
         }));

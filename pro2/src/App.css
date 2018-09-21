@@ -36,6 +36,7 @@ div > ul > li {
   text-align: center;
   font-size: 20px;
   padding: 16px;
+  margin-right: 20px;
   text-decoration: none;
   float: left;
 }
@@ -66,16 +67,17 @@ li > a:hover {
 .tab-active,
 .tab-inactive {
   width: 70%;
-  border: 1px solid #05386b;
-  border-left: 0;
-  border-top: 0;
-
+  border: 2px solid #05386b;
+  border-radius: 15px;
+  margin-top: 10px;
+  margin-left: 2%;
 }
 .tab-active > div,
 .tab-inactive > div {
-  border: 1px solid #05386b;
+  border: 2px solid #05386b;
   margin: 10px;
   padding: 10px;
+  border-style: dashed;
 }
 
 .tab-list {
@@ -110,12 +112,12 @@ li > a:hover {
 }
 
 .bilde > svg {
-  width: auto;
-  height: auto;
+  width: 100%;
+  height: 80%;
 }
 .bilde {
-  max-height: 200px;
-  max-width: 200px;
+  max-height: 12vh;
+  max-width: 12vw;
   margin: auto;
 }
 
@@ -126,11 +128,12 @@ li > a:hover {
   align-content: center;
 }
 .diktTekst > p {
-  font-size: 1vw;
+  font-size: 1.2vw;
 }
 .diktTekst {
   text-align: center;
   grid-area: text;
+  font-family: Verdana, sans-serif;
 
 }
 
@@ -142,10 +145,7 @@ li > a:hover {
   font-style: italic;
 }
 
-/*
 
-
- */
 
 #Category-container {
   background-color: #064e91;
@@ -155,9 +155,9 @@ li > a:hover {
   color: #edf5e1;
   border-radius: 15px;
 }
-/*/////////////////////////////////////////////////
-Masse av denne stylingen trengs ikke lengre, brukt tutorial og mye av det gjelder ikke oss.
-*/
+/*
+SideNav baren sin CSS
+ */
 .sidenav {
   height: 100%;
   width: 0;
@@ -189,6 +189,9 @@ Masse av denne stylingen trengs ikke lengre, brukt tutorial og mye av det gjelde
 }
 
 
+/*
+Custom radio Buttons
+ */
 
 
 /*
@@ -205,11 +208,26 @@ siden eller fjerner den kaneppen så vi har standaren
     display: block;
   }
   .diktTekst > p {
-    font-size: 3vw;
+    font-size: 4vw;
   }
   .tab-active,
   .tab-inactive {
     width: 100%;
+  }
+  .bilde {
+    max-height: 25vh;
+    max-width: 25vw;
+    margin: auto;
+  }
+}
+@media only screen and (max-width: 1200px) and (min-width: 602px){
+  .diktTekst > p{
+    font-size: 2.2vw;
+  }
+  .bilde {
+    max-height: 22vh;
+    max-width: 22vw;
+    margin: auto;
   }
 }
 
