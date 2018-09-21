@@ -11,6 +11,7 @@ class Navigation extends Component {
     e.preventDefault();
     document.getElementById("mySidenav").style.width = "250px";
   };
+  
   //La inn i render selve knappen som blir brukt. Denne koden og den funksjonen ovenfor kan flyttes hvor som helst.
   // kanskje inn i en egen komponent?
   render() {
@@ -19,22 +20,22 @@ class Navigation extends Component {
         <div id="navBar">
       <ul>
         <li>
-          <a href="#" onClick={this.props.onNav.bind(null, this._nav("tab1"))}>
+          <a href={null} onClick={this.props.onNav.bind(null, this._nav("tab1"))}>
             Tab 1
           </a>
         </li>
         <li>
-          <a href="#" onClick={this.props.onNav.bind(null, this._nav("tab2"))}>
+          <a href={null} onClick={this.props.onNav.bind(null, this._nav("tab2"))}>
             Tab 2
           </a>
         </li>
         <li>
-          <a href="#" onClick={this.props.onNav.bind(null, this._nav("tab3"))}>
+          <a href={null} onClick={this.props.onNav.bind(null, this._nav("tab3"))}>
             Tab 3
           </a>
         </li>
         <li>
-          <a href="#" onClick={this.props.onNav.bind(null, this._nav("tab4"))}>
+          <a href={null} onClick={this.props.onNav.bind(null, this._nav("tab4"))}>
             Tab 4
           </a>
         </li>
