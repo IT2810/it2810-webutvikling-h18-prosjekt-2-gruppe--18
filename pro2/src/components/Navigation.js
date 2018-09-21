@@ -15,6 +15,8 @@ class Navigation extends Component {
   // kanskje inn i en egen komponent?
   render() {
     return (
+        <React.Fragment>
+        <div id="navBar">
       <ul>
         <li>
           <a href="#" onClick={this.props.onNav.bind(null, this._nav("tab1"))}>
@@ -37,11 +39,11 @@ class Navigation extends Component {
           </a>
         </li>
         <li>
-          <span id="sidenavOpenBtn" onClick={this.openNav}>
-            &#9776;
-          </span>
         </li>
       </ul>
+        </div>
+        <span id="sidenavOpenBtn" onClick={this.openNav}>&#9776; </span>
+        </React.Fragment>
     );
   }
 

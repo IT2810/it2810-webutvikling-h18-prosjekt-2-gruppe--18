@@ -1,9 +1,31 @@
 body {
-  background-color: rgb(214, 214, 214);
+  background-color: #5cdb95;
+  height: 100vh;
 }
-
 #tab-container {
   display: flex;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+#navBar {
+  background-color: #064e91;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+#AudioComponent {
+  grid-area: sound;
+}
+
+
+.App > div {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 20% 80%;
 }
 
 div > ul > li {
@@ -15,6 +37,9 @@ div > ul > li {
   text-decoration: none;
   float: left;
 }
+div > ul > li > a {
+  color: #edf5e1;
+}
 
 body {
   font-size: 3.5vh;
@@ -25,7 +50,6 @@ div > ul {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #333333;
 }
 
 li > a {
@@ -37,6 +61,8 @@ li > a {
 }
 
 li > a:hover {
+  background-color: #04305a;
+  border-radius: 15px;
   background-color: #111111;
 }
 
@@ -50,20 +76,21 @@ li > a:hover {
 
 .tab-active,
 .tab-inactive {
-  width: 80vw;
-  border: 1px solid rgb(0, 0, 0);
+  width: 70%;
+  border: 1px solid #05386b;
   border-left: 0;
   border-top: 0;
+
 }
 .tab-active > div,
 .tab-inactive > div {
-  border: 1px solid rgb(0, 0, 0);
-  margin: 2vw;
-  padding: 1vw;
+  border: 1px solid #05386b;
+  margin: 10px;
+  padding: 10px;
 }
 
 .tab-list {
-  border-bottom: 1px solid rgb(0, 0, 0);
+  border-bottom: 1px solid #05386b;
   padding-left: 0;
   display: flex;
 }
@@ -77,7 +104,7 @@ li > a:hover {
 
 .tab-list-active {
   background-color: rgb(148, 148, 148);
-  border: solid rgb(0, 0, 0);
+  border: solid #05386b;
   border-width: 1px 1px 0 1px;
 }
 
@@ -86,9 +113,11 @@ li > a:hover {
 }
 
 .tab-active {
-  display: block;
   font-family: Verdana, sans-serif;
   font-style: normal;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas: "img" "text" "sound";
 }
 
 .bilde > svg {
@@ -107,6 +136,9 @@ li > a:hover {
   text-align: center;
   align-content: center;
 }
+.diktTekst > p {
+  font-size: 1vw;
+}
 
 audio {
   width: 30vw;
@@ -114,17 +146,34 @@ audio {
 
 .diktTekst {
   text-align: center;
-  margin: auto;
+  grid-area: text;
+
+}
+
+#imageContainer {
+  grid-area: img;
 }
 
 .diktTittel {
   font-style: italic;
 }
 
+/*
+
+
+ */
+
+#Category-container {
+  background-color: #064e91;
+  margin: 10px;
+  padding:20px;
+  min-width: 120px;
+  color: #edf5e1;
+  border-radius: 15px;
+}
 /*/////////////////////////////////////////////////
 Masse av denne stylingen trengs ikke lengre, brukt tutorial og mye av det gjelder ikke oss.
 */
-
 .sidenav {
   height: 100%;
   width: 0;
@@ -132,36 +181,53 @@ Masse av denne stylingen trengs ikke lengre, brukt tutorial og mye av det gjelde
   z-index: 1;
   top: 0;
   right: 0;
-  background-color: #111;
+  background-color: #064e91;
   overflow-x: hidden;
   transition: 0.5s;
-  padding-top: 10vh;
+  padding-top: 60px;
+  border-radius: 15px;
+
 }
 
 .sidenav .closebtn {
   position: absolute;
   top: 0;
-  right: 2, 5vh;
-  font-size: 4vh;
-  margin-left: 4vh;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+  color: #edf5e1;
 }
+#sidenavOpenBtn {
+  position: absolute;
+  top: 20px;
+  right: 10px;
+  color: #edf5e1;
+  display: none;
+}
+
+
+
 
 /*
 Media Queries som sjekker om skjermen er både for liten og for stor, for sto gir den visning av desktop
 siden eller fjerner den kaneppen så vi har standaren
  */
-@media only screen and (max-width: 600px) {
-  #Category-container {
+@media only screen and (max-width: 600px), only screen and (max-height: 416px ) {
+  #nonMobileDiv {
     display: none;
   }
   #sidenavOpenBtn {
     font-size: 5vh;
     cursor: pointer;
+    display: block;
+  }
+  .diktTekst > p {
+    font-size: 3vw;
+  }
+  .tab-active,
+  .tab-inactive {
+    width: 100%;
   }
 }
 
-@media only screen and (min-width: 601px) {
-  #sidenavOpenBtn {
-    display: none;
-  }
-}
+
