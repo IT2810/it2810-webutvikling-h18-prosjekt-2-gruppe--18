@@ -19,22 +19,22 @@ class Navigation extends Component {
         <div id="navBar">
       <ul>
         <li>
-          <a href="#" onClick={this.props.onNav.bind(null, this._nav("tab1"))}>
+          <a href="#" id="tab1" onClick={this.props.onNav.bind(null, this._nav("tab1"))}>
             Tab 1
           </a>
         </li>
         <li>
-          <a href="#" onClick={this.props.onNav.bind(null, this._nav("tab2"))}>
+          <a href="#" id="tab2" onClick={this.props.onNav.bind(null, this._nav("tab2"))}>
             Tab 2
           </a>
         </li>
         <li>
-          <a href="#" onClick={this.props.onNav.bind(null, this._nav("tab3"))}>
+          <a href="#" id="tab3" onClick={this.props.onNav.bind(null, this._nav("tab3"))}>
             Tab 3
           </a>
         </li>
         <li>
-          <a href="#" onClick={this.props.onNav.bind(null, this._nav("tab4"))}>
+          <a href="#" id="tab4" onClick={this.props.onNav.bind(null, this._nav("tab4"))}>
             Tab 4
           </a>
         </li>
