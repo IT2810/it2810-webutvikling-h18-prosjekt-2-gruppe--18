@@ -170,6 +170,7 @@ SideNav baren sin CSS
   transition: 0.5s;
   padding-top: 60px;
   border-radius: 15px;
+  box-sizing: border-box;
 }
 
 .sidenav .closebtn {
