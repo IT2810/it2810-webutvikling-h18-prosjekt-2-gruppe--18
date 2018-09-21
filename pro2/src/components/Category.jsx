@@ -26,8 +26,9 @@ class Category extends Component {
   };
 
     resize = e => {
-        let size = window.innerWidth;
-        if (size <= 600) {
+        let sizeX = window.innerWidth;
+        let sizeY = window.innerHeight;
+        if ((sizeX <= 600) || (sizeY <= 417)){
             this.setState({
                 mobile: true
             });
