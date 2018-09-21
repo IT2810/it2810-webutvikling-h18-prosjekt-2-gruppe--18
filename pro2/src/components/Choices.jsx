@@ -6,6 +6,7 @@ class Choices extends Component {
     this._getValueChecked = this._getValueChecked.bind(this);
   }
 
+  //gets the value of the radio-button checked and sends it to the parent component
   _getValueChecked() {
     let checked = document.querySelector(
       'input[name="' + this.props.type + '"]:checked'
@@ -13,6 +14,7 @@ class Choices extends Component {
     this.props.onChangeValue(checked);
   }
 
+  //Makes the first letter in the title big
   _storForbokstav() {
     let ord = this.props.type;
     return ord.charAt(0).toUpperCase() + ord.slice(1);
@@ -22,6 +24,7 @@ class Choices extends Component {
     return (
       <div>
         <h3>{this._storForbokstav()} type</h3>
+        {/* detects change by using the forms onchange function. Then sends this to a function for sending that infor up to parent component */}
         <form onChange={() => this._getValueChecked()}>
           <input
             type="radio"
