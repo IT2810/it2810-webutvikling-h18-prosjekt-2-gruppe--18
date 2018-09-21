@@ -1,5 +1,5 @@
 body {
-  background-color: #5CDB95;
+  background-color: #5cdb95;
 }
 
 .App-logo {
@@ -9,9 +9,23 @@ body {
 
 #tab-container {
   display: flex;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 2;
+  grid-row-end: 3;
 }
-#navBar{
+#navBar {
   background-color: #064e91;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+.App > div {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 20% 80%;
 }
 
 div > ul > li {
@@ -23,8 +37,8 @@ div > ul > li {
   text-decoration: none;
   float: left;
 }
-div > ul > li > a{
-  color: #EDF5E1;
+div > ul > li > a {
+  color: #edf5e1;
 }
 
 div > ul {
@@ -32,7 +46,6 @@ div > ul {
   margin: 0;
   padding: 0;
   overflow: hidden;
-
 }
 
 li > a {
@@ -51,19 +64,19 @@ li > a:hover {
 .tab-active,
 .tab-inactive {
   width: 70%;
-  border: 1px solid #05386B;
+  border: 1px solid #05386b;
   border-left: 0;
   border-top: 0;
 }
 .tab-active > div,
 .tab-inactive > div {
-  border: 1px solid #05386B;
+  border: 1px solid #05386b;
   margin: 10px;
   padding: 10px;
 }
 
 .tab-list {
-  border-bottom: 1px solid #05386B;
+  border-bottom: 1px solid #05386b;
   padding-left: 0;
   display: flex;
 }
@@ -77,14 +90,13 @@ li > a:hover {
 
 .tab-list-active {
   background-color: rgb(148, 148, 148);
-  border: solid #05386B;
+  border: solid #05386b;
   border-width: 1px 1px 0 1px;
 }
 
 .tab-inactive {
   display: none;
 }
-
 
 .tab-active {
   display: block;
@@ -108,7 +120,7 @@ li > a:hover {
   text-align: center;
   align-content: center;
 }
-.diktTekst > p{
+.diktTekst > p {
   font-size: 2vw;
 }
 .diktTekst {
@@ -116,7 +128,6 @@ li > a:hover {
   margin: auto;
   font-size: 1vw;
 }
-
 
 .diktTittel {
   font-style: italic;
