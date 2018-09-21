@@ -4,6 +4,7 @@ class Choices extends Component {
   constructor(props) {
     super(props);
     this._getValueChecked = this._getValueChecked.bind(this);
+
   }
 
   _getValueChecked() {
@@ -23,14 +24,20 @@ class Choices extends Component {
       <div>
         <h3>{this._storForbokstav()} type</h3>
         <form onChange={() => this._getValueChecked()}>
+          <div className="inputGroup">
           <input
             type="radio"
             name={this.props.type}
             id={this.props.type}
             value="Cat"
           />
-          Cat
+          <label htmlFor={this.props.type}>
+              Cat
+          </label>
+          </div>
+
           <br />
+            <div className="inputGroup">
           <input
             type="radio"
             name={this.props.type}
@@ -38,15 +45,22 @@ class Choices extends Component {
             value="Dog"
             defaultChecked="true"
           />
-          Dog
+            <label htmlFor={this.props.type}>
+                Dog
+            </label>
+            </div>
           <br />
+                <div className="inputGroup">
           <input
             type="radio"
             name={this.props.type}
             id={this.props.type}
             value="Elephant"
           />
-          Elephant
+            <label htmlFor={this.props.type}>
+                Elephant
+            </label>
+                </div>
         </form>
       </div>
     );
