@@ -1,10 +1,7 @@
 body {
   background-color: #5cdb95;
-}
+  height: 100vh;
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
 }
 
 #tab-container {
@@ -21,6 +18,11 @@ body {
   grid-row-start: 1;
   grid-row-end: 2;
 }
+
+#AudioComponent {
+  grid-area: sound;
+}
+
 
 .App > div {
   display: grid;
@@ -67,6 +69,7 @@ li > a:hover {
   border: 1px solid #05386b;
   border-left: 0;
   border-top: 0;
+
 }
 .tab-active > div,
 .tab-inactive > div {
@@ -99,9 +102,11 @@ li > a:hover {
 }
 
 .tab-active {
-  display: block;
   font-family: Verdana, sans-serif;
   font-style: normal;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas: "img" "text" "sound";
 }
 
 .bilde > svg {
@@ -109,9 +114,9 @@ li > a:hover {
   height: auto;
 }
 .bilde {
-  height: 200px;
-  width: 200px;
-  margin: 0 auto;
+  max-height: 200px;
+  max-width: 200px;
+  margin: auto;
 }
 
 #AudioComponent > p,
@@ -121,14 +126,91 @@ li > a:hover {
   align-content: center;
 }
 .diktTekst > p {
-  font-size: 2vw;
+  font-size: 1vw;
 }
 .diktTekst {
   text-align: center;
-  margin: auto;
-  font-size: 1vw;
+  grid-area: text;
+
+}
+
+#imageContainer {
+  grid-area: img;
 }
 
 .diktTittel {
   font-style: italic;
 }
+
+/*
+
+
+ */
+
+#Category-container {
+  background-color: #064e91;
+  margin: 10px;
+  padding:20px;
+  min-width: 120px;
+  color: #edf5e1;
+  border-radius: 15px;
+}
+/*/////////////////////////////////////////////////
+Masse av denne stylingen trengs ikke lengre, brukt tutorial og mye av det gjelder ikke oss.
+*/
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: #064e91;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+  border-radius: 15px;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+  color: #edf5e1;
+}
+#sidenavOpenBtn {
+  position: absolute;
+  top: 20px;
+  right: 10px;
+  color: #edf5e1;
+  display: none;
+}
+
+
+
+
+/*
+Media Queries som sjekker om skjermen er både for liten og for stor, for sto gir den visning av desktop
+siden eller fjerner den kaneppen så vi har standaren
+ */
+@media only screen and (max-width: 600px), only screen and (max-height: 416px ) {
+  #nonMobileDiv {
+    display: none;
+  }
+  #sidenavOpenBtn {
+    font-size: 30px;
+    cursor: pointer;
+    display: block;
+  }
+  .diktTekst > p {
+    font-size: 3vw;
+  }
+  .tab-active,
+  .tab-inactive {
+    width: 100%;
+  }
+}
+
+

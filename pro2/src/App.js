@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./App.css";
-import "./RadioButton.css"
 
 // components
 import Display from "./components/Display.jsx";
