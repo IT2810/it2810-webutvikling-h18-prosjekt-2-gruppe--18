@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "tittel": "Hunden",
+    "firstLine": "Hunden til kunden, spiste munnen",
+    "secondLine": "Nei denne kunden vil hunden ha munnen",
+    "thirdLine": "Hundene til kunden kunne det."
+  },
+  {
+    "id": 2,
+    "tittel": "Hounden",
+    "firstLine": "Wooooof",
+    "secondLine": "Wooooof bork",
+    "thirdLine": "Baaaaaark"
+  },
+  {
+    "id": 3,
+    "tittel": "Barnas hunder",
+    "firstLine": "En hund spiser barn",
+    "secondLine": "En annen spiser ungdom",
+    "thirdLine": "Og den tredje liker turer."
+  },
+  {
+    "id": 4,
+    "tittel": "VidHundelig",
+    "firstLine": "Et bein i munnen er godt",
+    "secondLine": "Bacon lukter godt om morgenen",
+    "thirdLine": "Frokost er best"
+  }
+]
