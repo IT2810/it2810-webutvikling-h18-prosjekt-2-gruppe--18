@@ -1,15 +1,6 @@
 import React from 'react';
 
 export default class TextComponent extends React.Component {
-
-    /**
-     * Setter start staten av textComponent til å ha en tom dikttabell og en null diktId, samt arrayene som skal holde kategoriene og dere dikt.
-     * @param props
-     */
-    constructor(props) {
-        super(props);
-    }
-
     render() {
 
         return (

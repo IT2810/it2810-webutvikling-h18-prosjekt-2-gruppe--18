@@ -15,10 +15,6 @@ class Display extends Component {
 
         this._onNav = this._onNav.bind(this);
         this._getInfoFromCategories = this._getInfoFromCategories.bind(this);
-
-
-        // TODO: implement update-tab-on-active-selection
-
     }
 
     _getInfoFromCategories = info => {
@@ -31,6 +27,7 @@ class Display extends Component {
         if (info.startsWith("Sound")) {
             this.setState({soundType: info.substring(7, info.length)});
         }
+
     };
 
 
@@ -73,7 +70,7 @@ class Display extends Component {
     }
 
     _onNav(current_view) {
-        this.setState(prevState => ({
+        this.setState(() => ({
             view: current_view,
         }));
     }

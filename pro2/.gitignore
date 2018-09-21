@@ -7,7 +7,6 @@
 # webstorm
 /.idea
 ../.idea/
-*/
 
 # VS Code
 */.vscode

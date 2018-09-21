@@ -16,7 +16,9 @@ class Tab extends Component {
                 name: null,
                 file: null
             },
-            visual: "",
+            visual: {
+                file: null
+            },
             text: {
                 category: "",
                 selectionNumber: null,
@@ -24,10 +26,10 @@ class Tab extends Component {
             }
         };
 
-        this.oldImageType = {};
         this._getAudioFile = this._getAudioFile.bind(this);
         this._getTextFile = this._getTextFile.bind(this);
         this._updateSubComponents = this._updateSubComponents.bind(this);
+        this._getImageFile = this._getImageFile.bind(this);
     }
 
 
@@ -45,6 +47,11 @@ class Tab extends Component {
         let unique2 = Math.round(Math.random() * 4 + 0.5);
         let CategoryType = this.props.typer.textType;
         this._getTextFile(unique2, CategoryType);
+
+        // image
+        let unique3 = Math.round(Math.random() * 4 + 0.5);
+        let image_name = this.props.typer.imageType + unique3.toString();
+        this._getImageFile(image_name);
     }
 
 
@@ -73,20 +80,15 @@ class Tab extends Component {
             this._getTextFile(unique, CategoryType);
         }
 
-
-
-        // TODO fix same feature for image
-        // so it's not in render.
-    }
-    render() {
-        if (this.oldImageType !== this.props.typer.imageType) {
+        // image
+        if (prevProps.typer.imageType !== this.props.typer.imageType) {
             let unique = Math.round(Math.random() * 4 + 0.5);
-            this.state.visual = this.props.typer.imageType + unique.toString();
-            this.state.visual = this.state.visual.toLocaleLowerCase();
-            console.log("forandret: ", this.state.visual);
+            let image_name = this.props.typer.imageType + unique.toString();
+            this._getImageFile(image_name);
         }
 
-        this.oldImageType = this.props.typer.imageType; 
+    }
+    render() {
         return (
             <div className={this.props.activeStatus}>
                 <AudioComponent
@@ -94,7 +96,7 @@ class Tab extends Component {
                 <TextComponent
                     text={this.state.text}/>
                 <div id="imageContainer">
-                    <Visuals bilde={this.state.visual}/>
+                    <Visuals image={this.state.visual}/>
                 </div>
             </div>
         );
@@ -144,6 +146,12 @@ class Tab extends Component {
             });
     }
 
+    /**
+     * Fetches the text with AJAX.
+     * @param number
+     * @param type
+     * @private
+     */
     _getTextFile(number, type){
         let Data = [];
         let url = ('./media/TextJSON/'+type
@@ -161,6 +169,23 @@ class Tab extends Component {
                     }
                 });
             });
+    }
+
+    /**
+     * Fetches the image with AJAX.
+     * @param image_name
+     * @private
+     */
+    _getImageFile(image_name) {
+        axios.get(`./media/images/` + image_name + ".svg").then(response => {
+            let obj = response.data;
+
+            this.setState({
+                visual: {
+                    file: obj
+                }
+            })
+        });
     }
 }
 export default Tab;

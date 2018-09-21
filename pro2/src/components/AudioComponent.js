@@ -3,13 +3,16 @@ import React, { Component } from "react";
 /**
  * Component that plays chosen audio when one
  * presses the play button. Choice must be made in side bar.
+ * Sounds used are free to use.
  * Development Status: Completed
  */
 class AudioComponent extends Component {
-  constructor(props) {
-    super(props);
-  }
 
+    /**
+     * Removes the ".mp3" substring from the name so that
+     * the Audio player can have a name connected to it.
+     * @returns {*}
+     */
   fjernMP3() {
     if (this.props.audio.name !== null) {
       let navn = this.props.audio.name;
@@ -36,7 +39,6 @@ class AudioComponent extends Component {
   }
 }
 
-//TODO: remove console.logs
 
 export default AudioComponent;
 
