@@ -1,15 +1,14 @@
 # IT 2810 Dokumentasjon
 
-| **        1** |
+|Gruppe 18 |
 | --- |
-| **        1** |
-| **        2** |
-| Oppgavefordeling        |
-| **        3** |
-| **        3** |
-| Filstruktur        |
-| Komponentstruktur        |
-| **        5** |
+| Intro |
+| Oppgavefordeling|
+| Oppnåelsen av krav |
+| Testing |
+| Filstruktur |
+| Komponentstruktur |
+| Kilder og ressurser|
 
 
 
@@ -75,13 +74,13 @@ Vertikal  visning på mobil viser seg å gå fint ved testing, men måtte legge 
 
 Filstruktur
 
-- ➔➔PRO2
-  - ◆◆public
+- ➔PRO2
+  - ◆public
     - media
       - Audio
       - Images
       - TextJSON
-  - ◆◆src
+  - ◆src
     - components
       - Category.jsx
       - Choices.jsx
@@ -101,8 +100,8 @@ Komponentstruktur
 
 Her er strukturen over komponentene (som overføres til html-en)
 
-- ➔➔App
-  - ◆◆Display
+- ➔App
+  - ◆Display
     - Navigation
     - Tab
       - AudioComponent
