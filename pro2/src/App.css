@@ -1,7 +1,9 @@
 body {
   background-color: #5cdb95;
   height: 100vh;
+
 }
+
 #tab-container {
   display: flex;
   grid-column-start: 1;
@@ -32,17 +34,13 @@ div > ul > li {
   display: block;
   color: white;
   text-align: center;
-  font-size: 3vh;
-  padding: 2vh;
+  font-size: 20px;
+  padding: 16px;
   text-decoration: none;
   float: left;
 }
 div > ul > li > a {
   color: #edf5e1;
-}
-
-body {
-  font-size: 3.5vh;
 }
 
 div > ul {
@@ -56,22 +54,13 @@ li > a {
   display: block;
   color: white;
   text-align: center;
-  padding: 2vh;
+  padding: 16px;
   text-decoration: none;
 }
 
 li > a:hover {
   background-color: #04305a;
   border-radius: 15px;
-  background-color: #111111;
-}
-
-#Category-container {
-  border: 1px solid rgb(0, 0, 0);
-  border-left: 0;
-  border-top: 0;
-  padding: 1vw;
-  min-width: 15vw;
 }
 
 .tab-active,
@@ -125,9 +114,9 @@ li > a:hover {
   height: auto;
 }
 .bilde {
-  height: 22vh;
-  width: 22vh;
-  margin: 0 auto;
+  max-height: 200px;
+  max-width: 200px;
+  margin: auto;
 }
 
 #AudioComponent > p,
@@ -139,11 +128,6 @@ li > a:hover {
 .diktTekst > p {
   font-size: 1vw;
 }
-
-audio {
-  width: 30vw;
-}
-
 .diktTekst {
   text-align: center;
   grid-area: text;
@@ -186,7 +170,6 @@ Masse av denne stylingen trengs ikke lengre, brukt tutorial og mye av det gjelde
   transition: 0.5s;
   padding-top: 60px;
   border-radius: 15px;
-
 }
 
 .sidenav .closebtn {
@@ -217,7 +200,7 @@ siden eller fjerner den kaneppen så vi har standaren
     display: none;
   }
   #sidenavOpenBtn {
-    font-size: 5vh;
+    font-size: 30px;
     cursor: pointer;
     display: block;
   }
