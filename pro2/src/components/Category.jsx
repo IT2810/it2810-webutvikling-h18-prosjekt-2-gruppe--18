@@ -2,14 +2,15 @@ import React, { Component } from "react";
 import Choices from "./Choices";
 
 class Category extends Component {
-    state = {
-        mobile: false
-    };
+  state = {
+    mobile: false
+  };
 
     componentDidMount() {
         window.addEventListener("resize", this.resize.bind(this));
         this.resize();
     }
+
 
     sendInfoUp() {
         this.props.onChangeValue(this.state);

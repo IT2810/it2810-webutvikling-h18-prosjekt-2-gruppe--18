@@ -6,24 +6,35 @@ import React, { Component } from "react";
  * Development Status: Completed
  */
 class AudioComponent extends Component {
-    constructor(props) {
-        super(props);
-    }
+  constructor(props) {
+    super(props);
+  }
 
-    render() {
-        return (
-            <div id="AudioComponent">
-                <p>
-                    {this.props.audio.name}
-                </p>
-                <audio src={this.props.audio.file} controls>
-                    Audio is not supported in this browser.
-                </audio>
-            </div>
-        )
+  fjernMP3() {
+    if (this.props.audio.name !== null) {
+      let navn = this.props.audio.name;
+      navn = navn.slice(0, navn.length - 4);
+      navn = navn.charAt(0).toUpperCase() + navn.slice(1);
+      navn =
+        navn.substr(0, navn.length - 1) +
+        " " +
+        navn.substr(navn.length - 1, navn.length);
+      return navn;
     }
+    return null;
+  }
+
+  render() {
+    return (
+      <div id="AudioComponent">
+        <p>{this.fjernMP3()}</p>
+        <audio src={this.props.audio.file} controls>
+          Audio is not supported in this browser.
+        </audio>
+      </div>
+    );
+  }
 }
-
 
 //TODO: remove console.logs
 
